@@ -15,12 +15,19 @@ export default class App extends Component{
         labels:j,
         datasets:[
          {
-           label: "Intensity",
+           label: "Region 1",
            backgroundColor:"rgba(0, 255, 0, 0.75)",
            borderColor:"rgba(0, 255, 0, 0.75)",
            fill:false,
            data:[0.8,0.5,0.9,1,0.7,0.2,0.6,0.3, 0, 0.4]
-         }
+         },
+         {
+          label: "Region 2",
+          backgroundColor:"rgba(255, 0, 0, 0.75)",
+          borderColor:"rgba(255, 0, 0, 0.75)",
+          fill:false,
+          data:[0.8,0.2,1,0.5,0.1,0.7,0.6,0.5, 0.6, 0.2]
+        }
         ]
       }
     }
