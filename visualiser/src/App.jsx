@@ -5,6 +5,7 @@ import { Grid, Col, GymnastProvider } from 'gymnast'
 import IntensityGraph from './intensityGraph'
 import VideoPlayer from './VideoPlayer'
 import Chart from './Chart'
+import Export from './ExportScreenshot'
 
 const style = {
     color: 'rgb(29, 31, 33)',
@@ -33,12 +34,21 @@ const btnStyle = {
 }
 
 function App() {
+    function handleHomeClick(e) {
+        e.preventDefault();
+        alert("Home")
+    }
+    function handleScreenShotClick(e) {
+        e.preventDefault();
+        alert("Screenshot")
+    }
+
     return (
         <GymnastProvider columns={48}>
             <Grid style={outStyle}>
                 <Col size="16" style={style}>
-                    <button style={btnStyle}>Home</button>
-                    <button style={btnStyle}> ScreenShot</button>
+                    <button style={btnStyle} onClick={handleHomeClick}>Home</button>
+                    <button style={btnStyle} onClick={handleScreenShotClick}> ScreenShot</button>
                     <Chart />
                     <IntensityGraph />
                 </Col>
