@@ -7,10 +7,12 @@ import './App.css';
 export default class App extends Component{
   constructor(props){
     super(props)
-
+    for(var i = 1;i<1001;i++){
+      
+    }
     this.state = {
       data:{
-        labels:[1,2,3,4,5,6,7,8,9,10],
+        labels:[1,2,3,4,5,6,7,8,9, ],
         datasets:[
          {
            label: "Intensity",
@@ -36,5 +38,3 @@ export default class App extends Component{
     )
   }
 }
-
-
