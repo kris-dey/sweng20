@@ -30,16 +30,6 @@ export default class Export extends Component {
             <div className="mb5">
                 <button onClick={this.printDocument}>Print</button>
             </div>
-            <div id="divToPrint" className="mt4" {...css({
-                backgroundColor: '#f5f5f5',
-                width: '210mm',
-                minHeight: '297mm',
-                marginLeft: 'auto',
-                marginRight: 'auto'
-            })}>
-                <div>Note: Here the dimensions of div are same as A4</div>
-                <div>You Can add any component here</div>
-            </div>
         </div>);
     }
 }
