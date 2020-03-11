@@ -5,10 +5,6 @@ import jsPDF from 'jspdf'
 
 import App from './App'
 
-// download html2canvas and jsPDF and save the files in app/ext, or somewhere else
-// the built versions are directly consumable
-// import {html2canvas, jsPDF} from 'app/ext';
-
 
 export default class Export extends Component {
     constructor(props) {
@@ -22,7 +18,7 @@ export default class Export extends Component {
                 const imgData = canvas.toDataURL('image/png');
                 const pdf = new jsPDF({ orientation: 'l' });
                 pdf.addImage(imgData, 'JPEG', 0, 0, 192 * 2, 108 * 2);
-                // pdf.output('dataurlnewwindow');
+                pdf.output('dataurlnewwindow');
                 pdf.save("download.pdf");
             })
             ;
@@ -33,18 +29,8 @@ export default class Export extends Component {
             <div className="mb5">
                 <button onClick={this.printDocument}>Print</button>
             </div>
-            {/* <div id="divToPrint" className="mt4" style={{
-                backgroundColor: '#f5f5f5',
-                width: '210mm',
-                minHeight: '297mm',
-                marginLeft: 'auto',
-                marginRight: 'auto'
-            }}> */}
             <div id="divToPrint" className="mt4">
                 <App />
-                {/* <div>Note: Here the dimensions of div are same as A4</div>
-                <div>You Can add any component here</div> */}
-
             </div>
         </div>);
     }
