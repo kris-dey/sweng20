@@ -55,6 +55,7 @@ class App extends Component {
             graphThreeStatus: true
         })
     }
+
     handleScreenShotClick(e) {
         e.preventDefault();
         alert("Screenshot")
@@ -67,7 +68,14 @@ class App extends Component {
             <GymnastProvider id="divToPrint" className="mt4" columns={48} >
                 <Grid style={outStyle}>
                     <Col size="16" style={style}>
-                        <button style={btnStyle} onClick={this.handleHomeClick}>Home</button>
+                        {/* <button style={btnStyle} onClick={this.handleHomeClick}>Home</button> */}
+                        <button style={btnStyle} onClick={() => {
+                            this.setState({
+                                graphOneStatus: !this.state.graphOneStatus,
+                                graphTwoStatus: !this.state.graphTwoStatus,
+                                graphThreeStatus: true
+                            })
+                        }}>Home</button>
                         <button style={btnStyle} onClick={this.handleScreenShotClick}> ScreenShot</button>
                         {this.state.graphOneStatus ? <Chart /> : ""}
                         {this.state.graphTwoStatus ? <Box /> : ""}
