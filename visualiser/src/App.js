@@ -7,8 +7,7 @@ import './App.css';
 export default class App extends Component{
   constructor(props){
     super(props)
-  var j =[1,2,3,4,5,6,7,8,9,10]    
-
+  var j = [1,2,3,4,5,6,7,8,9,10] 
     this.state = {
       lineData:{
         
@@ -52,11 +51,19 @@ export default class App extends Component{
   }
   render() {
     return(
-      <div style= {{position: 'relative', width: 600, height:550}}>
+      <div style= {{position: 'relative', width: 900, height:550}}>
         <h3>Line Graph</h3>
         <Line
         options={{
-          responsive: true
+          
+          responsive: true,
+          scales: {
+            xAxes: [{
+                ticks: {
+                    display: false
+                }
+            }]
+        }
           
         }}
         data={this.state.lineData}
