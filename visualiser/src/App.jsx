@@ -62,32 +62,74 @@ class App extends Component {
 
     }
 
+    printDocument() {
+
+        let canvas = document.createElement('canvas')
+        // canvas.setAttribute('id', 'canvas')
+        // let canvas = document.getElementById('canvas') // declare a canvas element in your html
+        let ctx = canvas.getContext('2d');
+        let videos = document.querySelectorAll('video')
+        let w, h
+        for (let i = 0, len = videos.length; i < len; i++) {
+            const v = videos[i]
+            if (!v.src) continue // no video here
+            try {
+                w = v.videoWidth
+                h = v.videoHeight
+                canvas.width = w
+                canvas.height = h
+                ctx.fillRect(0, 0, w, h)
+                ctx.drawImage(v, 0, 0, w, h)
+                v.style.backgroundImage = `url(${canvas.toDataURL()})` // here is the magic
+                v.style.backgroundSize = 'cover'
+                ctx.clearRect(0, 0, w, h); // clean the canvas
+            } catch (e) {
+                continue
+            }
+        }
+
+
+        const input = document.getElementById('divToPrint');
+        html2canvas(input, { allowTaint: true })
+            .then((canvas) => {
+                const imgData = canvas.toDataURL('image/png');
+                const pdf = new jsPDF({ orientation: 'l' });
+
+                pdf.addImage(imgData, 'JPEG', 5, 5, 144 * 2, 83 * 2, "Screenshot");
+                // pdf.addHTML(canvas.childNodes)
+                pdf.output('dataurlnewwindow');
+                // pdf.save("download.pdf");
+            })
+            ;
+    }
+
 
     render() {
         return (
-            <GymnastProvider id="divToPrint" className="mt4" columns={48} >
-                <Grid style={outStyle}>
-                    <Col size="16" style={style}>
-                        {/* <button style={btnStyle} onClick={this.handleHomeClick}>Home</button> */}
-                        <button style={btnStyle} onClick={() => {
-                            this.setState({
-                                graphOneStatus: !this.state.graphOneStatus,
-                                graphTwoStatus: !this.state.graphTwoStatus,
-                                graphThreeStatus: true
-                            })
-                        }}>Home</button>
-                        <button style={btnStyle} onClick={this.handleScreenShotClick}> ScreenShot</button>
-                        {this.state.graphOneStatus ? <Chart /> : ""}
-                        {this.state.graphTwoStatus ? <Box /> : ""}
-                        {this.state.graphThreeStatus ? <IntensityGraph /> : ""}
-                    </Col>
-                    <Col size="1"></Col>
-                    <Col size="31" style={style}>
-                        <VideoPlayer />
-                    </Col>
-                </Grid>
-            </GymnastProvider>
-
+            <div id="divToPrint">
+                <GymnastProvider className="mt4" columns={48} >
+                    <Grid style={outStyle}>
+                        <Col size="16" style={style}>
+                            {/* <button style={btnStyle} onClick={this.handleHomeClick}>Home</button> */}
+                            <button style={btnStyle} onClick={() => {
+                                this.setState({
+                                    graphOneStatus: !this.state.graphOneStatus,
+                                    graphTwoStatus: !this.state.graphTwoStatus,
+                                    graphThreeStatus: true
+                                })
+                            }}>Home</button>
+                            <button style={btnStyle} onClick={this.printDocument}> ScreenShot</button>
+                            {this.state.graphOneStatus ? <Chart /> : ""}
+                            {this.state.graphTwoStatus ? <Box /> : ""}
+                            {this.state.graphThreeStatus ? <IntensityGraph /> : ""}
+                        </Col>
+                        <Col size="1"></Col>
+                        <Col size="31" style={style}>
+                            <VideoPlayer />
+                        </Col>
+                    </Grid>
+                </GymnastProvider>
+            </div>
         )
     }
 }

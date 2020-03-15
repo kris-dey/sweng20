@@ -17,7 +17,8 @@ export default class Export extends Component {
             .then((canvas) => {
                 const imgData = canvas.toDataURL('image/png');
                 const pdf = new jsPDF({ orientation: 'l' });
-                pdf.addImage(imgData, 'JPEG', 0, 0, 192 * 2, 108 * 2);
+                pdf.addImage(imgData, 'JPEG', 0, 0, 1440, 826); // 1440, 826
+
                 pdf.output('dataurlnewwindow');
                 pdf.save("download.pdf");
             })
