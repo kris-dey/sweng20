@@ -1,24 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import Chart from "./components/Chart";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <p>
+        <Chart
+          label={["Jan", "Feb", "Mar", "April", "May", "Jun"]}
+          hData={[
+            { x: 0, y: 80 },
+            { x: 10, y: 71 },
+            { x: 20, y: 42 },
+            { x: 30, y: 40 },
+            { x: 40, y: 29 },
+            { x: 50, y: 21 }
+          ]}
+          bData={[
+            { x: 0, y: 85 },
+            { x: 10, y: 83 },
+            { x: 20, y: 70 },
+            { x: 30, y: 55 },
+            { x: 40, y: 42 },
+            { x: 50, y: 35 }
+          ]}
+          cData={[
+            { x: 0, y: 100 },
+            { x: 10, y: 100 },
+            { x: 20, y: 100 },
+            { x: 30, y: 100 },
+            { x: 40, y: 100 },
+            { x: 50, y: 100 }
+          ]}
+        />
+      </p>
     </div>
   );
 }
