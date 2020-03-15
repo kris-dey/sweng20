@@ -8,7 +8,7 @@ import Chart from './Chart'
 
 const style = {
     color: 'rgb(29, 31, 33)',
-    backgroundColor: '#d9d9d9',
+    backgroundColor: '#ffffff',
     marginTop: "S",
     marginRight: "S"
 }
@@ -26,10 +26,10 @@ const Cont = ({ children }) => (
 
 const btnStyle = {
     marginTop: '5px',
-    marginLeft: '10px',
-    padding: "10px",
-    paddingLeft: "40px",
-    paddingRight: "40px"
+    marginLeft: '30px',
+    padding: "5px",
+    paddingLeft: "10px",
+    paddingRight: "10px"
 }
 
 function App() {
@@ -37,8 +37,7 @@ function App() {
         <GymnastProvider columns={48}>
             <Grid style={outStyle}>
                 <Col size="16" style={style}>
-                    <button style={btnStyle}>Home</button>
-                    <button style={btnStyle}> ScreenShot</button>
+                    <button style={btnStyle}> ScreenShot Page </button>
                     <Chart />
                     <IntensityGraph />
                 </Col>
