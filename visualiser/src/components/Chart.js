@@ -54,8 +54,8 @@ class Chart extends Component {
             title: {
               display: true,
               text: "Cancer Growth",
-              fontSize: 25,
-              onClick: getCoords
+              fontSize: 25
+              //onClick: getCoords
             },
             legend: {
               display: true,
@@ -63,11 +63,9 @@ class Chart extends Component {
             }
           }}
         />
+        <h1>Current time: {this.props.label[this.props.label.length - 1]}</h1>
       </div>
     );
-    function getCoords() {
-      alert("hi");
-    }
   }
 }
 

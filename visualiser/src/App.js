@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <p>
         <Chart
-          label={["Jan", "Feb", "Mar", "April", "May", "Jun"]}
+          label={["0:00", "0:01", "0:02", "0:03", "0:04", "0:05"]}
           hData={[
             { x: 0, y: 80 },
             { x: 10, y: 71 },
