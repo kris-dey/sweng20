@@ -3,11 +3,13 @@ import { Grid, Col, GymnastProvider } from 'gymnast'
 import Box from './Box'
 // import Vid from './Vid'
 import IntensityGraph from './intensityGraph'
-import VideoPlayer from './VideoPlayer'
+// import VideoPlayer from './VideoPlayer'
 import Chart from './Chart'
-import Export from './ExportScreenshot'
+// import Export from './ExportScreenshot'
+import VideoPlayer from "./components/VideoPlayer"
+// import button from "./components/button";
 
-import DataTables from 'datatables.net-dt'
+// import DataTables from 'datatables.net-dt'
 
 
 import html2canvas from 'html2canvas'

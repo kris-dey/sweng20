@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 
 import html2canvas from 'html2canvas'
 import jsPDF from 'jspdf'
@@ -7,9 +7,9 @@ import App from './App'
 
 
 export default class Export extends Component {
-    constructor(props) {
-        super(props);
-    }
+    // constructor(props) {
+    //     super(props);
+    // }
 
     printDocument() {
         const input = document.getElementById('divToPrint');
