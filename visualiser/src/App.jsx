@@ -15,7 +15,7 @@ import jsPDF from 'jspdf'
 
 const style = {
     color: 'rgb(29, 31, 33)',
-    backgroundColor: '#d9d9d9',
+    backgroundColor: '#ffffff',
     marginTop: "S",
     marginRight: "S"
 }
@@ -33,10 +33,10 @@ const Cont = ({ children }) => (
 
 const btnStyle = {
     marginTop: '5px',
-    marginLeft: '10px',
-    padding: "10px",
-    paddingLeft: "40px",
-    paddingRight: "40px"
+    marginLeft: '30px',
+    padding: "5px",
+    paddingLeft: "10px",
+    paddingRight: "10px"
 }
 class App extends Component {
     constructor(props) {
