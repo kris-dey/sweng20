@@ -7,6 +7,9 @@ import VideoPlayer from './VideoPlayer'
 import Chart from './Chart'
 import Export from './ExportScreenshot'
 
+import DataTables from 'datatables.net-dt'
+
+
 import html2canvas from 'html2canvas'
 import jsPDF from 'jspdf'
 
