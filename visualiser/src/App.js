@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Line, Bar} from 'react-chartjs-2';
+import {Chart, Line, Bar} from 'react-chartjs-2';
 
 
 //import logo from './logo.svg';
@@ -7,36 +7,55 @@ import './App.css';
 export default class App extends Component{
   constructor(props){
     super(props)
-  var j = [1,2,3,4,5,6,7,8,9,10];
+    var originalLineDraw = Chart.controllers.line.prototype.draw;
+    Chart.helpers.extend(Chart.controllers.line.prototype, {
+      draw: function() {
+        originalLineDraw.apply(this, arguments);
+    
+        var chart = this.chart;
+        var ctx = chart.chart.ctx;
+    
+        var index = chart.config.data.lineAtIndex;
+        if (index) {
+          var xaxis = chart.scales['x-axis-0'];
+          var yaxis = chart.scales['y-axis-0'];
+    
+          ctx.save();
+          ctx.beginPath();
+          ctx.moveTo(xaxis.getPixelForValue(undefined, index), yaxis.top);
+          ctx.strokeStyle = '#ff0000';
+          ctx.lineTo(xaxis.getPixelForValue(undefined, index), yaxis.bottom);
+          ctx.stroke();
+          ctx.restore();
+        }
+      }
+    });
+  
   var k =[]; var y = []; var z = [];
   var x = 1;
   function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
   }
 
-  while(x<1000){
-    k.push(x);x++;
+  while(x<11){
+    k.push("Frame " + x);x++;
     y.push(getRandomArbitrary(0.4,1))
     z.push(getRandomArbitrary(0,0.6))
-  }
+  }  
   
-  for(var i =0;i < j.length;i++){
-    j[i] = "Frame " + j[i];
-  }
-  j = k
-  
-
     this.state = {
       lineData:{
         
-        labels:j,
+    
+        
+        labels:k,
         datasets:[
          {
            label: "Intensity Region 1",
            backgroundColor:"rgba(0, 255, 0, 0.75)",
            borderColor:"rgba(0, 255, 0, 0.75)",
            fill:false,
-           data:y//[0.8,0.5,0.9,1,0.7,0.2,0.6,0.3, 0, 0.4]
+           data:y,
          },
          {
           label: "Intensity Region 2",
@@ -45,7 +64,8 @@ export default class App extends Component{
           fill:false,
           data:z
         }
-        ]
+        ],
+        lineAtIndex: 5,
       },
       barData:{
         labels: ['ROI 1', 'ROI 2', 'ROI 3'],
@@ -73,18 +93,18 @@ export default class App extends Component{
         <h3>Line Graph</h3>
         <Line
         options={{
-          
-          responsive: true,
+          events: ['click'],
           scales: {
             xAxes: [{
                 ticks: {
                     display: false
                 }
             }]
-        }
+        },
           
         }}
         data={this.state.lineData}
+        
         />
 
         <h3>Bar Graph</h3>
