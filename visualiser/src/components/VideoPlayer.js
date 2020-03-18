@@ -37,7 +37,7 @@ class VideoPlayer extends Component {
           width="900"
           height="500"
           src={videos}
-          frameborder="0"
+          frameBorder="0"
           controls
           // allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
