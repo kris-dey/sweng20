@@ -37,7 +37,7 @@ export default class App extends Component{
     return Math.random() * (max - min) + min;
   }
 
-  while(x<11){
+  while(x<21){
     k.push("Frame " + x);x++;
     y.push(getRandomArbitrary(0.4,1))
     z.push(getRandomArbitrary(0,0.6))
@@ -45,9 +45,7 @@ export default class App extends Component{
   
     this.state = {
       lineData:{
-        
-    
-        
+                
         labels:k,
         datasets:[
          {
@@ -65,7 +63,7 @@ export default class App extends Component{
           data:z
         }
         ],
-        lineAtIndex: 5,
+        lineAtIndex: (getRandomArbitrary(0,10)),
       },
       barData:{
         labels: ['ROI 1', 'ROI 2', 'ROI 3'],
@@ -107,7 +105,7 @@ export default class App extends Component{
         
         />
 
-        <h3>Bar Graph</h3>
+        <h3>Bar Chart</h3>
         <Bar
           options={{
             title: {
@@ -132,7 +130,7 @@ export default class App extends Component{
 
         />
       </div>
-
+      
     )
   }
 }
