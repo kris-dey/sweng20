@@ -87,11 +87,11 @@ export default class App extends Component{
   }
   render() {
     return(
-      <div style= {{position: 'relative', width: 900, height:550}}>
+      <div style= {{position: 'relative', width: 600, height:550}}>
         <h3>Line Graph</h3>
         <Line
         options={{
-          events: ['click'],
+          
           scales: {
             xAxes: [{
                 ticks: {
