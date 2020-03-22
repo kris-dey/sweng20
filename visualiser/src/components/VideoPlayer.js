@@ -5,7 +5,7 @@ import Button from "./button";
 
 let renderBoxes = [
   {
-    right: 250,
+    right: 500,
     bottom: 500,
     width: 100,
     height: 100,
@@ -57,7 +57,11 @@ class VideoPlayer extends Component {
         {renderBoxes.map(e => {
           return <Button params={e} />;
         })}
-        {/* <Button params={{ right: 200, bottom: 600, width: 180, height: 100 }} /> */}
+        {
+          <Button
+            params={{ right: 200, bottom: 600, width: 180, height: 100 }}
+          />
+        }
       </div>
     );
   }
