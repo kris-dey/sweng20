@@ -8,6 +8,48 @@ import LineGraph from './lineGraph'
 
 //import logo from './logo.svg';
 import './App.css';
+var k = []; var y = []; var z = [];
+var x = 1;
+function getRandomArbitrary(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+while (x < 21) {
+  k.push("Frame " + x); x++;
+  y.push(getRandomArbitrary(0.4, 1))
+  z.push(getRandomArbitrary(0, 0.6))
+}
+const lineData ={
+    labels: k,
+          datasets:[
+           {
+             label: "Intensity Region 1",
+             backgroundColor:"rgba(0, 255, 0, 0.75)",
+             borderColor:"rgba(0, 255, 0, 0.75)",
+             fill:false,
+             data:y,
+           },
+           {
+            label: "Intensity Region 2",
+            backgroundColor:"rgba(255, 0, 0, 0.75)",
+            borderColor:"rgba(255, 0, 0, 0.75)",
+            fill:false,
+            data:z,
+          }
+          ],
+        //   lineAtIndex: (getRandomArbitrary(0,10)),
+        }
+const lineOptions={
+       scales: {
+              xAxes: [{
+                  ticks: {
+                      display: false
+                  }
+              }]
+          },
+            
+          }
+        
 
 
 const barData = {
@@ -52,9 +94,7 @@ export default class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      barHealthy: [50, 40, 50],
-      barBenign: [20, 20, 30],
-      barCancerous: [30, 40, 20]
+  
       // tried to pass these to barChart but that throws an 'undefined error'.
 
     }
@@ -62,17 +102,7 @@ export default class App extends Component {
 
   }
   render() {
-    var k = []; var y = []; var z = [];
-    var x = 1;
-    function getRandomArbitrary(min, max) {
-      return Math.random() * (max - min) + min;
-    }
-
-    while (x < 21) {
-      k.push("Frame " + x); x++;
-      y.push(getRandomArbitrary(0.4, 1))
-      z.push(getRandomArbitrary(0, 0.6))
-    }
+   
 
 
     return (
@@ -80,7 +110,8 @@ export default class App extends Component {
 
         <LineGraph
         //this now draws but has no labels nor data despite it being hard coded in line graph
-
+        lineData={lineData}
+        options={lineOptions}
 
         />
 

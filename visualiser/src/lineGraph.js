@@ -29,9 +29,25 @@ import {Chart, Line} from 'react-chartjs-2';
       });
 
       this.state = {  
-        lineData:this.props.lineData,
-        options:this.props.options        
-        //   labels: [1,2,3,4,5],
+        lineData: this.props.lineData,
+        options: this.props.options        
+      
+      }
+    }
+    
+        render() {
+            return(
+              <div style= {{position: 'relative', width: 600, height:550}}>
+                <h3>Line Graph</h3>
+                <Line
+                options={this.state.options}               
+                data={this.state.lineData}
+
+                
+                />
+                </div>
+                //SAMPLE PROPS:
+                  //   labels: [1,2,3,4,5],
         //   datasets:[
         //    {
         //      label: "Intensity Region 1",
@@ -63,20 +79,6 @@ import {Chart, Line} from 'react-chartjs-2';
             
         //   }
         // }
-      }
-    }
-    
-        render() {
-            return(
-              <div style= {{position: 'relative', width: 600, height:550}}>
-                <h3>Line Graph</h3>
-                <Line
-               
-                data={this.state.data}
-                options={this.state.options}
-                
-                />
-                </div>
             )}
     
 }
