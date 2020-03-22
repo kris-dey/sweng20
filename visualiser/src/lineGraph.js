@@ -29,21 +29,21 @@ import {Chart, Line} from 'react-chartjs-2';
       });
 
       this.state = {          
-          labels: this.labels,
+          labels: this.props.params.labels,
           datasets:[
            {
              label: "Intensity Region 1",
              backgroundColor:"rgba(0, 255, 0, 0.75)",
              borderColor:"rgba(0, 255, 0, 0.75)",
              fill:false,
-             data:this.data,
+             data:this.props.params.data,
            },
            {
             label: "Intensity Region 2",
             backgroundColor:"rgba(255, 0, 0, 0.75)",
             borderColor:"rgba(255, 0, 0, 0.75)",
             fill:false,
-            data:this.data,
+            data:this.props.params.data,
           }
           ],
         //   lineAtIndex: (getRandomArbitrary(0,10)),
@@ -65,7 +65,7 @@ import {Chart, Line} from 'react-chartjs-2';
                 },
                   
                 }}
-                data={this.state.lineData}
+                data={this.state.data}
                 
                 />
                 </div>
