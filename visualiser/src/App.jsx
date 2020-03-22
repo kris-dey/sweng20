@@ -123,7 +123,7 @@ class App extends Component {
                             <button style={btnStyle} onClick={this.printDocument}> ScreenShot</button>
                             {this.state.graphOneStatus ? <Chart /> : ""}
                             {this.state.graphTwoStatus ? <Box /> : ""}
-                            {this.state.graphThreeStatus ? <IntensityGraph /> : ""}
+                            {this.state.graphThreeStatus ? <IntensityGraph intensityData={this.props.intensityData} /> : ""}
                         </Col>
                         <Col size="1"></Col>
                         <Col size="31" style={style}>
