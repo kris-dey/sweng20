@@ -27,7 +27,7 @@ const barData = {
   }]
 }
 
-const options = {
+const barOptions = {
   title: {
     display: true,
 
@@ -89,7 +89,7 @@ export default class App extends Component {
         <BarChart
 
           barData={barData}
-
+          options={barOptions}
 
 
         // 

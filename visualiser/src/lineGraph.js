@@ -29,40 +29,42 @@ import {Chart, Line} from 'react-chartjs-2';
       });
 
       this.state = {  
-        lineData:{        
-          labels: [1,2,3,4,5],
-          datasets:[
-           {
-             label: "Intensity Region 1",
-             backgroundColor:"rgba(0, 255, 0, 0.75)",
-             borderColor:"rgba(0, 255, 0, 0.75)",
-             fill:false,
-             data:[.2,.4,.3,.5,.1],
-           },
-           {
-            label: "Intensity Region 2",
-            backgroundColor:"rgba(255, 0, 0, 0.75)",
-            borderColor:"rgba(255, 0, 0, 0.75)",
-            fill:false,
-            data:[0.1,.2,.3,.4,.8],
-          }
-          ],
-        //   lineAtIndex: (getRandomArbitrary(0,10)),
-        },
-        options:{
+        lineData:this.props.lineData,
+        options:this.props.options        
+        //   labels: [1,2,3,4,5],
+        //   datasets:[
+        //    {
+        //      label: "Intensity Region 1",
+        //      backgroundColor:"rgba(0, 255, 0, 0.75)",
+        //      borderColor:"rgba(0, 255, 0, 0.75)",
+        //      fill:false,
+        //      data:[.2,.4,.3,.5,.1],
+        //    },
+        //    {
+        //     label: "Intensity Region 2",
+        //     backgroundColor:"rgba(255, 0, 0, 0.75)",
+        //     borderColor:"rgba(255, 0, 0, 0.75)",
+        //     fill:false,
+        //     data:[0.1,.2,.3,.4,.8],
+        //   }
+        //   ],
+        // //   lineAtIndex: (getRandomArbitrary(0,10)),
+        // },
+        // options:{
           
                   
-            scales: {
-              xAxes: [{
-                  ticks: {
-                      display: false
-                  }
-              }]
-          },
+        //     scales: {
+        //       xAxes: [{
+        //           ticks: {
+        //               display: false
+        //           }
+        //       }]
+        //   },
             
-          }
-        }
+        //   }
+        // }
       }
+    }
     
         render() {
             return(
