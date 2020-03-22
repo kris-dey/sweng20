@@ -3,12 +3,12 @@ import videos from "./sampleVideo.mp4";
 import classes from "./VideoPlayer.module.css";
 import Button from "./button";
 
-const locationsRight = [200, 210, 220, 230, 250];
-const locationsBottom = [500, 620, 300];
+const locationsRight = [200, 210, 220, 230, 240];
+const locationsBottom = [500, 510, 520, 530, 540];
 let renderBoxes = [
   {
     right: locationsRight,
-    bottom: locationsBottom,
+    bottom: 90,
     width: 100,
     height: 100,
     onClick: () => {
@@ -16,8 +16,8 @@ let renderBoxes = [
       // console.log(document.getElementById("surgeryVideo").currentTime)
       // alert("BTN ONE")
     }
-  },
-  {
+  }
+  /*{
     right: locationsRight,
     bottom: locationsBottom,
     width: 60,
@@ -38,7 +38,7 @@ let renderBoxes = [
       // console.log(document.getElementById("surgeryVideo").currentTime)
       // alert("BTN THREE")
     }
-  }
+  }*/
 ];
 
 class VideoPlayer extends Component {
@@ -59,11 +59,6 @@ class VideoPlayer extends Component {
         {renderBoxes.map(e => {
           return <Button params={e} />;
         })}
-        {
-          <Button
-            params={{ right: 200, bottom: 600, width: 180, height: 100 }}
-          />
-        }
       </div>
     );
   }
