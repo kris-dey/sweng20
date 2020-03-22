@@ -16,6 +16,7 @@ export default class App extends Component {
       barHealthy: [50,40,50],
       barBenign: [20,20,30,],
       barCancerous: [30,40,20]
+      // tried to pass these to barChart but that throws an 'undefined error'.
 
     }
     
@@ -39,28 +40,15 @@ export default class App extends Component {
       <div style={{ position: 'relative', width: 600, height: 550 }}>
         
          <LineGraph 
-        // options={{
-
-        //   scales: {
-        //     xAxes: [{
-        //         ticks: {
-        //             display: false
-        //         }
-        //     }]
-        // },
-
-        // }}
-        // data={this.state.lineData}
+         //this now draws but has no labels nor data despite it being hard coded in line graph
+        
 
         />
 
         <h3>Bar Chart</h3>
         
          <BarChart
-         datasets ={{
-           data:[50,40,50]
-        
-      }}
+         
            
          
          
