@@ -43,6 +43,8 @@ class App extends Component {
             graphTwoStatus: false,
             graphThreeStatus: true
         }
+        console.log(this.props.intensityData);
+        console.log(this.props.predictionData);
     }
 
 
