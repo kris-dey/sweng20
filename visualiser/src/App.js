@@ -97,7 +97,7 @@ export default class App extends Component {
     return (
       <div style={{ position: 'relative', width: 600, height: 550 }}>
         <h3>Line Graph</h3>
-        return <LineGraph params={{ labels: k, data: y, data: z }}
+        return <LineGraph params={{ labels: k, }}
         // options={{
 
         //   scales: {
