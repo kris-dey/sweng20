@@ -3,10 +3,12 @@ import videos from "./sampleVideo.mp4";
 import classes from "./VideoPlayer.module.css";
 import Button from "./button";
 
+const locationsRight = [200, 210, 220, 230, 250];
+const locationsBottom = [500, 620, 300];
 let renderBoxes = [
   {
-    right: 500,
-    bottom: 500,
+    right: locationsRight,
+    bottom: locationsBottom,
     width: 100,
     height: 100,
     onClick: () => {
@@ -16,8 +18,8 @@ let renderBoxes = [
     }
   },
   {
-    right: 200,
-    bottom: 620,
+    right: locationsRight,
+    bottom: locationsBottom,
     width: 60,
     height: 40,
     onClick: () => {
@@ -27,8 +29,8 @@ let renderBoxes = [
     }
   },
   {
-    right: 280,
-    bottom: 300,
+    right: locationsRight,
+    bottom: locationsBottom,
     width: 180,
     height: 100,
     onClick: () => {

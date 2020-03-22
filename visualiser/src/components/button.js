@@ -54,7 +54,6 @@ class ButtonBoi extends Component {
           style={this.subTstFloat}
           onClick={this.state.onClick}
         ></button>
-        {/* <button style={btnFloatStyle}>tstBoi</button> */}
       </div>
     );
   }
