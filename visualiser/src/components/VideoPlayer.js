@@ -3,45 +3,47 @@ import videos from "./sampleVideo.mp4";
 import classes from "./VideoPlayer.module.css";
 import Button from "./button";
 
-const locationsRight = [200, 210, 220, 230, 240];
-const locationsBottom = [500, 510, 520, 530, 540];
-let renderBoxes = [
-  {
-    right: locationsRight,
-    bottom: 90,
-    width: 100,
-    height: 100,
-    onClick: () => {
-      alert(document.getElementById("surgeryVideo").currentTime);
-      // console.log(document.getElementById("surgeryVideo").currentTime)
-      // alert("BTN ONE")
+class VideoPlayer extends Component {
+  createBoxes() {
+    const locations = [200, 210, 220, 230, 240, 250];
+    for (let i = 0; i < locations.length; i++) {
+      let renderBoxes = [
+        {
+          right: i,
+          bottom: 500,
+          width: 100,
+          height: 100,
+          onClick: () => {
+            alert(document.getElementById("surgeryVideo").currentTime);
+            // console.log(document.getElementById("surgeryVideo").currentTime)
+            // alert("BTN ONE")
+          }
+        }
+        /*{
+      right: locationsRight,
+      bottom: locationsBottom,
+      width: 60,
+      height: 40,
+      onClick: () => {
+        alert(document.getElementById("surgeryVideo").currentTime);
+        // console.log(document.getElementById("surgeryVideo").currentTime)
+        // alert("BTN TWO")
+      }
+    },
+    {
+      right: locationsRight,
+      bottom: locationsBottom,
+      width: 180,
+      height: 100,
+      onClick: () => {
+        alert(document.getElementById("surgeryVideo").currentTime);
+        // console.log(document.getElementById("surgeryVideo").currentTime)
+        // alert("BTN THREE")
+      }
+    }*/
+      ];
     }
   }
-  /*{
-    right: locationsRight,
-    bottom: locationsBottom,
-    width: 60,
-    height: 40,
-    onClick: () => {
-      alert(document.getElementById("surgeryVideo").currentTime);
-      // console.log(document.getElementById("surgeryVideo").currentTime)
-      // alert("BTN TWO")
-    }
-  },
-  {
-    right: locationsRight,
-    bottom: locationsBottom,
-    width: 180,
-    height: 100,
-    onClick: () => {
-      alert(document.getElementById("surgeryVideo").currentTime);
-      // console.log(document.getElementById("surgeryVideo").currentTime)
-      // alert("BTN THREE")
-    }
-  }*/
-];
-
-class VideoPlayer extends Component {
   render() {
     return (
       <div className={classes.video}>
@@ -56,9 +58,7 @@ class VideoPlayer extends Component {
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         ></video>
-        {renderBoxes.map(e => {
-          return <Button params={e} />;
-        })}
+        {createBoxes()}
       </div>
     );
   }
