@@ -62,12 +62,12 @@ import _ from "lodash";
 }
 export default ButtonBoi;*/
 
-class ButtonBoi extends Component {
+export default class ButtonBoi extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      right: 0,
-      color: "red",
+      left: 0,
+      color: "#808080",
       duration: 300
     };
   }
@@ -75,9 +75,9 @@ class ButtonBoi extends Component {
   toggleButtonPosition = () => {
     let left = 0;
     if (!this.state.left || this.state.left === 0) {
-      left = Math.random() * 300 + 50;
+      left = Math.random();
     }
-    let duration = Math.random() * 300 + 200;
+    let duration = Math.random();
     let color = _.sample(["red", "blue", "black", "green"]);
     this.setState({
       left,
@@ -97,7 +97,7 @@ class ButtonBoi extends Component {
           }}
           default={{
             left: 0,
-            color: "red"
+            color: "#808080"
           }}
           duration={duration}
           easing="easeQuadIn"
@@ -106,7 +106,7 @@ class ButtonBoi extends Component {
             <div
               style={{
                 transform: `translate(${data.left}px, 0)`,
-                background: data.color || "red",
+                background: data.color || "#808080",
                 position: "absolute",
                 width: 100,
                 height: 50,
@@ -127,4 +127,3 @@ class ButtonBoi extends Component {
     );
   }
 }
-export default ButtonBoi;
