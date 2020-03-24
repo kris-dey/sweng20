@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Grid, Col, GymnastProvider } from 'gymnast'
 import Box from './Box'
 import BarChart from './components/barChart'
+import LineGraph from './components/lineGraph'
 import IntensityGraph from './intensityGraph'
 import Chart from './Chart'
 import VideoPlayer from "./components/VideoPlayer"
@@ -36,6 +37,48 @@ const btnStyle = {
     borderRadius: '3px',
     backgroundColor: '#FFFFFF'
 }
+var k = []; var y = []; var z = [];
+var x = 1;
+function getRandomArbitrary(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
+while (x < 21) {
+    k.push("Frame " + x); x++;
+    y.push(getRandomArbitrary(0.4, 1))
+    z.push(getRandomArbitrary(0, 0.6))
+}
+const lineData = {
+    labels: k,
+    datasets: [
+        {
+            label: "Intensity Region 1",
+            backgroundColor: "rgba(0, 255, 0, 0.75)",
+            borderColor: "rgba(0, 255, 0, 0.75)",
+            fill: false,
+            data: y,
+        },
+        {
+            label: "Intensity Region 2",
+            backgroundColor: "rgba(255, 0, 0, 0.75)",
+            borderColor: "rgba(255, 0, 0, 0.75)",
+            fill: false,
+            data: z,
+        }
+    ],
+    //   lineAtIndex: (getRandomArbitrary(0,10)),
+}
+const lineOptions = {
+    scales: {
+        xAxes: [{
+            ticks: {
+                display: false
+            }
+        }]
+    },
+
+}
+
 
 const barData = {
     labels: ['ROI 1', 'ROI 2'],
@@ -158,7 +201,10 @@ class App extends Component {
                                 })
                             }}>Home</button>
                             <button style={btnStyle} onClick={this.printDocument}> ScreenShot</button>
-                            {this.state.graphOneStatus ? <Chart /> : ""}
+                            {this.state.graphOneStatus ? <LineGraph
+                                lineData={lineData}
+                                options={lineOptions}
+                            /> : ""}
                             {this.state.graphTwoStatus ? <BarChart
                                 barData={barData}
                                 options={barOptions} /> : ""}
