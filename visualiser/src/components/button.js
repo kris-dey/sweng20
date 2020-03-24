@@ -67,7 +67,8 @@ export default class ButtonBoi extends Component {
     super(props);
     this.state = {
       left: 0,
-      color: "#808080",
+      bottom: 1000,
+      color: "grey",
       duration: 300
     };
   }
@@ -75,10 +76,10 @@ export default class ButtonBoi extends Component {
   toggleButtonPosition = () => {
     let left = 0;
     if (!this.state.left || this.state.left === 0) {
-      left = Math.random();
+      left = Math.random() * 100 + 50;
     }
-    let duration = Math.random();
-    let color = _.sample(["red", "blue", "black", "green"]);
+    let duration = Math.random() * 100 + 50;
+    let color = _.sample(["red", "grey", "blue", "green"]);
     this.setState({
       left,
       color,
@@ -97,7 +98,7 @@ export default class ButtonBoi extends Component {
           }}
           default={{
             left: 0,
-            color: "#808080"
+            color: "grey"
           }}
           duration={duration}
           easing="easeQuadIn"
@@ -106,7 +107,7 @@ export default class ButtonBoi extends Component {
             <div
               style={{
                 transform: `translate(${data.left}px, 0)`,
-                background: data.color || "#808080",
+                background: data.color || "grey",
                 position: "absolute",
                 width: 100,
                 height: 50,
