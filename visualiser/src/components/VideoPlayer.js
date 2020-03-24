@@ -14,10 +14,10 @@ let renderBoxes = [
       // console.log(document.getElementById("surgeryVideo").currentTime)
       // alert("BTN ONE")
     }
-  }
-  /*{
-    right: locationsRight,
-    bottom: locationsBottom,
+  },
+  {
+    right: 300,
+    bottom: 450,
     width: 60,
     height: 40,
     onClick: () => {
@@ -27,8 +27,8 @@ let renderBoxes = [
     }
   },
   {
-    right: locationsRight,
-    bottom: locationsBottom,
+    right: 370,
+    bottom: 470,
     width: 180,
     height: 100,
     onClick: () => {
@@ -36,7 +36,7 @@ let renderBoxes = [
       // console.log(document.getElementById("surgeryVideo").currentTime)
       // alert("BTN THREE")
     }
-  }*/
+  }
 ];
 
 class VideoPlayer extends Component {

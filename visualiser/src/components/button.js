@@ -21,7 +21,7 @@ import _ from "lodash";
 //   right: '800px'
 // }
 
-/*class ButtonBoi extends Component {
+class ButtonBoi extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -60,9 +60,9 @@ import _ from "lodash";
     );
   }
 }
-export default ButtonBoi;*/
+export default ButtonBoi;
 
-export default class ButtonBoi extends Component {
+/*export default class ButtonBoi extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -126,4 +126,4 @@ export default class ButtonBoi extends Component {
       </div>
     );
   }
-}
+}*/
