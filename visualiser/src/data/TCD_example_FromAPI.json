@@ -1,0 +1,70 @@
+[
+    {
+        "prediction": "Cancer",
+        "class_probabilities": {
+            "Benign": 0.008560521571891641,
+            "Healthy": 0.00010048950188517156,
+            "Cancer": 0.9913389889262233
+        },
+        "short_name": "Demo",
+        "roi_number": 0,
+        "time_const_exp": 3.5212327900403686,
+        "damping_exp": 1.7599616305793262,
+        "gain_exp": 12454.603244104243,
+        "inp_time_const_exp": 638.7082327499578,
+        "dc_exp": 498.1523438644219,
+        "delay_exp": 7.264818007997463,
+        "l1_error_exp": 0.015712037807825367,
+        "l2_error_exp": 0.0187711860577
+    },
+    {
+        "prediction": "Cancer",
+        "class_probabilities": {
+            "Benign": 0.0031301530265454365,
+            "Healthy": 7.542509641538471e-05,
+            "Cancer": 0.9967944218770395
+        },
+        "short_name": "Demo",
+        "roi_number": 2,
+        "time_const_exp": 2.2471101914567413,
+        "damping_exp": 1.1927946931440299,
+        "gain_exp": 9148.703583526854,
+        "inp_time_const_exp": 15520338269.434685,
+        "dc_exp": 404.71054307324084,
+        "delay_exp": 7.176402923471515,
+        "l1_error_exp": 0.020543855488301312,
+        "l2_error_exp": 0.024558499204355516
+    },
+    {
+        "prediction": "Healthy",
+        "class_probabilities": {
+            "Benign": 1.3462026510935695e-05,
+            "Healthy": 0.9999659391938864,
+            "Cancer": 2.0598779602217457e-05
+        },
+        "short_name": "Demo",
+        "roi_number": 3,
+        "time_const_exp": 2.7652001039839322,
+        "damping_exp": 0.8551199833276639,
+        "gain_exp": 9377.882975303184,
+        "inp_time_const_exp": 464.92851964055967,
+        "dc_exp": 389.33521426727197,
+        "delay_exp": 7.102583216395177,
+        "l1_error_exp": 0.02088947928199804,
+        "l2_error_exp": 0.02497128513398339
+    },
+    {
+        "short_name": "Demo",
+        "roi_number": 1,
+        "prediction": "No Prediction",
+        "class_probabilities": {},
+        "time_const_exp": 2.617059879992675,
+        "damping_exp": 0.6194719619847247,
+        "gain_exp": 32144.79237696208,
+        "inp_time_const_exp": 372.2972962362967,
+        "dc_exp": 664.1294628497076,
+        "delay_exp": 6.613875541451662,
+        "l1_error_exp": 0.013616053152226403,
+        "l2_error_exp": 0.016429033552108903
+    }
+]
