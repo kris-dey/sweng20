@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Grid, Col, GymnastProvider } from 'gymnast'
 import Box from './Box'
+import BarChart from './components/barChart'
 import IntensityGraph from './intensityGraph'
 import Chart from './Chart'
 import VideoPlayer from "./components/VideoPlayer"
@@ -31,9 +32,45 @@ const btnStyle = {
     padding: "5px",
     paddingLeft: "10px",
     paddingRight: "10px",
-    border: '1px solid #000000',      
+    border: '1px solid #000000',
     borderRadius: '3px',
     backgroundColor: '#FFFFFF'
+}
+
+const barData = {
+    labels: ['ROI 1', 'ROI 2'],
+    datasets: [{
+        label: 'Healthy',
+        backgroundColor: "rgba(0, 255, 0, 0.75)",
+        data: [50, 40],
+    }, {
+        label: 'Benign',
+        backgroundColor: "rgba(0, 0, 255, 0.75)",
+        data: [20, 20],
+    }, {
+        label: 'Cancerous',
+        backgroundColor: "rgba(255, 0, 0, 0.75)",
+        data: [30, 40],
+    }]
+}
+
+const barOptions = {
+    title: {
+        display: true,
+    },
+    tooltips: {
+        mode: 'index',
+        intersect: false
+    },
+    responsive: true,
+    scales: {
+        xAxes: [{
+            stacked: true,
+        }],
+        yAxes: [{
+            stacked: true
+        }]
+    }
 }
 class App extends Component {
     constructor(props) {
@@ -122,7 +159,9 @@ class App extends Component {
                             }}>Home</button>
                             <button style={btnStyle} onClick={this.printDocument}> ScreenShot</button>
                             {this.state.graphOneStatus ? <Chart /> : ""}
-                            {this.state.graphTwoStatus ? <Box /> : ""}
+                            {this.state.graphTwoStatus ? <BarChart
+                                barData={barData}
+                                options={barOptions} /> : ""}
                             {this.state.graphThreeStatus ? <IntensityGraph intensityData={this.props.intensityData} /> : ""}
                         </Col>
                         <Col size="1"></Col>
