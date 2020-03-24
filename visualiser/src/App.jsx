@@ -9,7 +9,7 @@ import jsPDF from 'jspdf'
 
 const style = {
     color: 'rgb(29, 31, 33)',
-    backgroundColor: '#ffffff',
+    backgroundColor: '#F8F8F8',
     marginTop: "S",
     marginRight: "S"
 }
@@ -30,7 +30,10 @@ const btnStyle = {
     marginLeft: '30px',
     padding: "5px",
     paddingLeft: "10px",
-    paddingRight: "10px"
+    paddingRight: "10px",
+    border: '1px solid #000000',      
+    borderRadius: '3px',
+    backgroundColor: '#FFFFFF'
 }
 class App extends Component {
     constructor(props) {
@@ -40,6 +43,8 @@ class App extends Component {
             graphTwoStatus: false,
             graphThreeStatus: true
         }
+        console.log(this.props.intensityData);
+        console.log(this.props.predictionData);
     }
 
 
@@ -118,7 +123,7 @@ class App extends Component {
                             <button style={btnStyle} onClick={this.printDocument}> ScreenShot</button>
                             {this.state.graphOneStatus ? <Chart /> : ""}
                             {this.state.graphTwoStatus ? <Box /> : ""}
-                            {this.state.graphThreeStatus ? <IntensityGraph /> : ""}
+                            {this.state.graphThreeStatus ? <IntensityGraph intensityData={this.props.intensityData} /> : ""}
                         </Col>
                         <Col size="1"></Col>
                         <Col size="31" style={style}>
