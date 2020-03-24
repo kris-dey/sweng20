@@ -64,7 +64,7 @@ class ButtonBoi extends Component {
         width: this.state.widthArr[time],
         height: this.state.heightArr[time]
       })
-    }, 1000)
+    }, 100)
 
 
     // setInterval(this.UpdateLoc, 500)
