@@ -22,14 +22,20 @@ import _ from "lodash";
 // }
 
 class ButtonBoi extends Component {
+  state = {}
   constructor(props) {
     super(props);
     this.state = {
-      right: this.props.params.right,
-      bottom: this.props.params.bottom,
-      width: this.props.params.width,
-      height: this.props.params.height,
-      onClick: this.props.params.onClick
+      rightArr: this.props.params.rightArr,
+      bottomArr: this.props.params.bottomArr,
+      widthArr: this.props.params.widthArr,
+      heightArr: this.props.params.heightArr,
+      right: this.props.params.rightArr[0],
+      bottom: this.props.params.bottomArr[0],
+      width: this.props.params.widthArr[0],
+      height: this.props.params.heightArr[0],
+      onClick: this.props.params.onClick,
+      vidName: this.props.params.vidName
     };
     this.subTstFloat = {
       right: parseInt(this.state.right),
@@ -44,16 +50,57 @@ class ButtonBoi extends Component {
       paddingTop: "0px",
       backgroundColor: "#f0f0"
     };
+
     // console.log(this.state)
     // console.log(this.subTstFloat);
+
+    setInterval(() => {
+      let time = Math.round(parseFloat(document.getElementById("surgeryVideo").currentTime) * 1)
+      console.log(time)
+      console.log(this.state)
+      this.setState({
+        right: this.state.rightArr[time],
+        bottom: this.state.bottomArr[time],
+        width: this.state.widthArr[time],
+        height: this.state.heightArr[time]
+      })
+    }, 1000)
+
+
+    // setInterval(this.UpdateLoc, 500)
   }
+  // UpdateLoc = function () {
+  //   let time = Math.round(parseFloat(document.getElementById("surgeryVideo").currentTime) * 10)
+  //   console.log(time)
+  //   console.log(this.state)
+  //   this.setState({
+  //     right: this.state.rightArr[time],
+  //     bottom: this.state.bottomArr[time],
+  //     width: this.state.widthArr[time],
+  //     height: this.state.heightArr[time]
+  //   })
+  // }
+
 
   render() {
+    let subTstFloat = {
+      right: parseInt(this.state.right),
+      bottom: parseInt(this.state.bottom),
+      margin: 10,
+      top: "auto",
+      left: "auto",
+      position: "fixed",
+      paddingRight: parseInt(this.state.width),
+      paddingBottom: parseInt(this.state.height),
+      paddingLeft: "0px",
+      paddingTop: "0px",
+      backgroundColor: "#f0f0"
+    };
     return (
       <div>
         <button
           className={classes.button}
-          style={this.subTstFloat}
+          style={subTstFloat}
           onClick={this.state.onClick}
         ></button>
       </div>
@@ -61,69 +108,3 @@ class ButtonBoi extends Component {
   }
 }
 export default ButtonBoi;
-
-/*export default class ButtonBoi extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      left: 0,
-      color: "#808080",
-      duration: 300
-    };
-  }
-
-  toggleButtonPosition = () => {
-    let left = 0;
-    if (!this.state.left || this.state.left === 0) {
-      left = Math.random();
-    }
-    let duration = Math.random();
-    let color = _.sample(["red", "blue", "black", "green"]);
-    this.setState({
-      left,
-      color,
-      duration
-    });
-  };
-
-  render() {
-    let { left, color, duration } = this.state;
-    return (
-      <div>
-        <Animate
-          data={{
-            left: left,
-            color: color
-          }}
-          default={{
-            left: 0,
-            color: "#808080"
-          }}
-          duration={duration}
-          easing="easeQuadIn"
-        >
-          {data => (
-            <div
-              style={{
-                transform: `translate(${data.left}px, 0)`,
-                background: data.color || "#808080",
-                position: "absolute",
-                width: 100,
-                height: 50,
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                borderRadius: 10,
-                color: "white",
-                cursor: "pointer"
-              }}
-              onClick={this.toggleButtonPosition}
-            >
-              Cancerous
-            </div>
-          )}
-        </Animate>
-      </div>
-    );
-  }
-}*/
