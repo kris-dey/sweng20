@@ -24,7 +24,7 @@ class VideoPlayer extends Component {
           this.setState({
             R1: true,
             R2: false,
-            R3: false
+
           });
           alert(
             Math.round(document.getElementById("surgeryVideo").currentTime) +
@@ -44,7 +44,7 @@ class VideoPlayer extends Component {
           this.setState({
             R1: false,
             R2: true,
-            R3: false
+
           });
           alert(
             Math.round(document.getElementById("surgeryVideo").currentTime) +
@@ -55,32 +55,13 @@ class VideoPlayer extends Component {
           //sayHi;
         }
       },
-      {
-        right: 280,
-        bottom: 300,
-        width: 180,
-        height: 100,
-        onClick: () => {
-          this.setState({
-            R1: false,
-            R2: false,
-            R3: true
-          });
-          alert(
-            Math.round(document.getElementById("surgeryVideo").currentTime) +
-            " seconds"
-          ); // console.log(document.getElementById("surgeryVideo").currentTime)
-          // alert("BTN THREE")
-        }
-      }
+
     ];
     let lastRegionChecked;
     if (this.state.R1) {
       lastRegionChecked = "Last Region Checked: ROI 1";
     } else if (this.state.R2) {
       lastRegionChecked = "Last Region Checked: ROI 2";
-    } else if (this.state.R3) {
-      lastRegionChecked = "Last Region Checked: ROI 3";
     } else {
       lastRegionChecked = "Last Region Checked: None";
     }
