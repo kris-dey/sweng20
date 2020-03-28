@@ -9,6 +9,9 @@ import VideoPlayer from "./components/VideoPlayer"
 import html2canvas from 'html2canvas'
 import jsPDF from 'jspdf'
 
+var ab = true;
+var cd = false;
+
 const style = {
     color: 'rgb(29, 31, 33)',
     backgroundColor: '#F8F8F8',
@@ -45,10 +48,15 @@ function getRandomArbitrary(min, max) {
 
 while (x < 21) {
     k.push("Frame " + x); x++;
-    y.push(getRandomArbitrary(0.4, 1))
-    z.push(getRandomArbitrary(0, 0.6))
+    if (ab) {
+        y.push(getRandomArbitrary(0.4, 1))
+    }
+    if (cd) {
+        z.push(getRandomArbitrary(0, 0.6))
+    }
 }
 const lineData = {
+
     labels: k,
     datasets: [
         {
@@ -58,26 +66,38 @@ const lineData = {
             fill: false,
             data: y,
         },
+
         {
+
             label: "Intensity Region 2",
             backgroundColor: "rgba(255, 0, 0, 0.75)",
             borderColor: "rgba(255, 0, 0, 0.75)",
             fill: false,
             data: z,
         }
+
+
+
     ],
-    //   lineAtIndex: (getRandomArbitrary(0,10)),
 }
+//   lineAtIndex: (getRandomArbitrary(0,10)),
+
 const lineOptions = {
     scales: {
         xAxes: [{
             ticks: {
                 display: false
             }
+        }],
+        yAxes: [{
+            ticks: {
+                beginAtZero: true
+            }
         }]
     },
 
 }
+
 
 
 const barData = {
