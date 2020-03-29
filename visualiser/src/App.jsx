@@ -9,8 +9,8 @@ import VideoPlayer from "./components/VideoPlayer"
 import html2canvas from 'html2canvas'
 import jsPDF from 'jspdf'
 
-var ab = true;
-var cd = false;
+/*var ab = true;
+var cd = false;*/
 
 const style = {
     color: 'rgb(29, 31, 33)',
@@ -40,63 +40,7 @@ const btnStyle = {
     borderRadius: '3px',
     backgroundColor: '#FFFFFF'
 }
-var k = []; var y = []; var z = [];
-var x = 1;
-function getRandomArbitrary(min, max) {
-    return Math.random() * (max - min) + min;
-}
 
-while (x < 21) {
-    k.push("Frame " + x); x++;
-    if (ab) {
-        y.push(getRandomArbitrary(0.4, 1))
-    }
-    if (cd) {
-        z.push(getRandomArbitrary(0, 0.6))
-    }
-}
-const lineData = {
-
-    labels: k,
-    datasets: [
-        {
-            label: "Intensity Region 1",
-            backgroundColor: "rgba(0, 255, 0, 0.75)",
-            borderColor: "rgba(0, 255, 0, 0.75)",
-            fill: false,
-            data: y,
-        },
-
-        {
-
-            label: "Intensity Region 2",
-            backgroundColor: "rgba(255, 0, 0, 0.75)",
-            borderColor: "rgba(255, 0, 0, 0.75)",
-            fill: false,
-            data: z,
-        }
-
-
-
-    ],
-}
-//   lineAtIndex: (getRandomArbitrary(0,10)),
-
-const lineOptions = {
-    scales: {
-        xAxes: [{
-            ticks: {
-                display: false
-            }
-        }],
-        yAxes: [{
-            ticks: {
-                beginAtZero: true
-            }
-        }]
-    },
-
-}
 
 
 
@@ -146,6 +90,8 @@ class App extends Component {
         console.log(this.props.intensityData);
         console.log(this.props.predictionData);
     }
+
+
 
 
     handleHomeClick(e) {
@@ -207,8 +153,67 @@ class App extends Component {
 
 
     render() {
+        var k = []; var y = []; var z = [];
+        var x = 1;
+        function getRandomArbitrary(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        while (x < 21) {
+            k.push("Frame " + x); x++;
+            // if (VideoPlayer.ab) {
+            y.push(getRandomArbitrary(0.4, 1))
+            // }
+            if (VideoPlayer.cd) {
+                z.push(getRandomArbitrary(0, 0.6))
+            }
+        }
+
+        let lineData = {
+
+            labels: k,
+            datasets: [
+                {
+                    label: "Intensity Region 1",
+                    backgroundColor: "rgba(0, 255, 0, 0.75)",
+                    borderColor: "rgba(0, 255, 0, 0.75)",
+                    fill: false,
+                    data: y,
+                },
+
+                {
+
+                    label: "Intensity Region 2",
+                    backgroundColor: "rgba(255, 0, 0, 0.75)",
+                    borderColor: "rgba(255, 0, 0, 0.75)",
+                    fill: false,
+                    data: z,
+                }
+
+
+
+            ],
+        };
+        //   lineAtIndex: (getRandomArbitrary(0,10)),
+
+        let lineOptions = {
+            scales: {
+                xAxes: [{
+                    ticks: {
+                        display: false
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            },
+
+        };
+
         return (
-            <div id="divToPrint">
+            <div id="divToPrint" >
                 <GymnastProvider className="mt4" columns={48} >
                     <Grid style={outStyle}>
                         <Col size="16" style={style}>
