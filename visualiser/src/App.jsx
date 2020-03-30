@@ -8,6 +8,9 @@ import Chart from './Chart'
 import VideoPlayer from "./components/VideoPlayer"
 import html2canvas from 'html2canvas'
 import jsPDF from 'jspdf'
+import Percentages from './components/percentages'
+import Comments from './components/Comments'
+
 
 const style = {
     color: 'rgb(29, 31, 33)',
@@ -171,8 +174,16 @@ class App extends Component {
                                 predictionData={this.props.predictionData}
                                 options={barOptions} /> : ""}
 
-                            {this.state.graphThreeStatus ? <IntensityGraph
-                                intensityData={this.props.intensityData} /> : ""}
+                            {/* {this.state.graphThreeStatus ? <IntensityGraph
+                                intensityData={this.props.intensityData} /> : ""} */}
+                            <Percentages
+                                CArray={[93, 4, 37, 20]}
+                                BArray={[0, 13, 44, 30]}
+                                HArray={[7, 83, 19, 50]}
+                            />
+                            <Comments
+                                annotations=" *Enter comments here* "
+                            />
                         </Col>
                         <Col size="1"></Col>
                         <Col size="31" style={style}>

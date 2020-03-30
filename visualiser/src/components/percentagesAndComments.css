@@ -1,0 +1,42 @@
+.App {
+    text-align: left;
+}
+
+.Data {
+    display: flex;
+}
+
+.Categories {
+    text-align: left;
+    margin-left: 55px;
+}
+
+.CancerData {
+    margin-left: 30px;
+    color: red;
+}
+
+.BenignData {
+    margin-left: 40px;
+    color: rgb(0, 174, 255);
+}
+
+.HealthyData {
+    margin-left: 30px;
+    color: rgb(18, 107, 18);
+}
+
+.Comments {
+    margin-top: 40px;
+}
+
+.App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}

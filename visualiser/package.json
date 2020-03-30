@@ -21,7 +21,10 @@
     "react-floating-action-button": "^1.0.5",
     "react-move": "^6.1.0",
     "react-player": "^1.15.2",
-    "react-scripts": "3.4.0"
+    "react-scripts": "3.4.0",
+    "datatables.net": "^1.10.20",
+    "datatables.net-colreorder": "^1.5.2",
+    "datatables.net-fixedcolumns": "^3.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
