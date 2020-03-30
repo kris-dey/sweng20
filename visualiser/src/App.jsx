@@ -85,7 +85,10 @@ class App extends Component {
         this.state = {
             graphOneStatus: true,
             graphTwoStatus: false,
-            graphThreeStatus: true
+            graphThreeStatus: true,
+            ab: true,
+            cd: true,
+            changes: false
         }
         console.log(this.props.intensityData);
         console.log(this.props.predictionData);
@@ -161,11 +164,18 @@ class App extends Component {
 
         while (x < 21) {
             k.push("Frame " + x); x++;
-            // if (VideoPlayer.ab) {
-            y.push(getRandomArbitrary(0.4, 1))
-            // }
-            if (VideoPlayer.cd) {
+            if (this.state.ab) {
+                y.push(getRandomArbitrary(0.4, 1))
+
+            }
+            else if (!this.state.ab) {
+                y.push(null)
+            }
+            if (this.state.cd) {
                 z.push(getRandomArbitrary(0, 0.6))
+            }
+            else if (!this.state.cd) {
+                z.push(null)
             }
         }
 
@@ -222,7 +232,8 @@ class App extends Component {
                                 this.setState({
                                     graphOneStatus: !this.state.graphOneStatus,
                                     graphTwoStatus: !this.state.graphTwoStatus,
-                                    graphThreeStatus: true
+                                    graphThreeStatus: true,
+
                                 })
                             }}>Home</button>
                             <button style={btnStyle} onClick={this.printDocument}> ScreenShot</button>
@@ -230,10 +241,29 @@ class App extends Component {
                                 lineData={lineData}
                                 options={lineOptions}
                             /> : ""}
+
                             {this.state.graphTwoStatus ? <BarChart
                                 barData={barData}
                                 options={barOptions} /> : ""}
                             {this.state.graphThreeStatus ? <IntensityGraph intensityData={this.props.intensityData} /> : ""}
+                            <button style={btnStyle} onClick={() => {
+                                this.setState({
+                                    ab: !this.state.ab,
+                                    changes: true,
+
+                                });
+
+                            }}>ROI 1</button>
+                            <button style={btnStyle} onClick={() => {
+                                this.setState({
+                                    cd: !this.state.cd,
+                                    changes: true,
+
+
+                                });
+
+                            }}>ROI 2</button>
+
                         </Col>
                         <Col size="1"></Col>
                         <Col size="31" style={style}>
