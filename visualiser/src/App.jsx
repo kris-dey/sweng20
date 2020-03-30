@@ -48,26 +48,6 @@ while (x < 21) {
     y.push(getRandomArbitrary(0.4, 1))
     z.push(getRandomArbitrary(0, 0.6))
 }
-const lineData = {
-    labels: k,
-    datasets: [
-        {
-            label: "Intensity Region 1",
-            backgroundColor: "rgba(0, 255, 0, 0.75)",
-            borderColor: "rgba(0, 255, 0, 0.75)",
-            fill: false,
-            data: y,
-        },
-        {
-            label: "Intensity Region 2",
-            backgroundColor: "rgba(255, 0, 0, 0.75)",
-            borderColor: "rgba(255, 0, 0, 0.75)",
-            fill: false,
-            data: z,
-        }
-    ],
-    //   lineAtIndex: (getRandomArbitrary(0,10)),
-}
 const lineOptions = {
     scales: {
         xAxes: [{
@@ -184,7 +164,7 @@ class App extends Component {
                             }}>Home</button>
                             <button style={btnStyle} onClick={this.printDocument}> ScreenShot</button>
                             {/* {this.state.graphOneStatus ? <LineGraph
-                                lineData={lineData}
+                                intensityData={this.props.intensityData}
                                 options={lineOptions}
                             /> : ""} */}
                             {this.state.graphTwoStatus ? <BarChart
@@ -198,7 +178,7 @@ class App extends Component {
                         <Col size="31" style={style}>
                             <VideoPlayer />
                             <LineGraph
-                                lineData={lineData}
+                                intensityData={this.props.intensityData}
                                 options={lineOptions}
                             />
                         </Col>
