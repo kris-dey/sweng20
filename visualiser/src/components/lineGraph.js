@@ -37,7 +37,7 @@ import {Chart, Line} from 'react-chartjs-2';
     
         render() {
             return(
-              <div style= {{position: 'relative', width: 600, height:550}}>
+              <div style= {{position: 'relative', width: 600, height:400}}>
                 <h3>Line Graph</h3>
                 <Line
                 options={this.state.options}               
