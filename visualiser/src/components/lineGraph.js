@@ -33,11 +33,11 @@ class LineGraph extends Component {
     let dataArr = [];
 
     this.props.intensityData.filter((data, index) => {
-      if (index % 20 == 0) {
-        dataArr.push(data.intensity0);
+        if (index % 20 == 0) {
+          dataArr.push(data.intensity0);
+          labels.push(index/20);
+        }
       }
-    }
-
     )
 
     let dataArr2 = [];
