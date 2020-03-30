@@ -198,6 +198,7 @@ class App extends Component {
                         <Col size="31" style={style}>
                             <VideoPlayer />
                             <LineGraph
+                                intensityData={this.props.intensityData}
                                 lineData={lineData}
                                 options={lineOptions}
                             />
