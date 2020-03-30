@@ -29,7 +29,7 @@ class Percentages extends React.Component {
         const items3 = filtered3.map(n => <div>{n}%</div>)
 
         return (
-            <div className="App">
+            <div className="Container">
                 <Categories
                     titles="Cancerous Benign Healthy"
                 />

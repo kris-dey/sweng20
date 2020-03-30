@@ -1,9 +1,11 @@
-.App {
+.Container {
     text-align: left;
+    font-size: 20px;
 }
 
 .Data {
     display: flex;
+    padding-left: 30px;
 }
 
 .Categories {
