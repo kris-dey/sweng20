@@ -56,8 +56,8 @@ class ButtonBoi extends Component {
 
     setInterval(() => {
       let time = Math.round(parseFloat(document.getElementById("surgeryVideo").currentTime) * 1)
-      console.log(time)
-      console.log(this.state)
+      // console.log(time)
+      // console.log(this.state)
       this.setState({
         right: this.state.rightArr[time],
         bottom: this.state.bottomArr[time],
