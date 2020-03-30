@@ -8,15 +8,18 @@ export default class IntensityGraph extends Component {
 
         //console.log(this.props.intensityData);
 
-        let dataArr = [];
+        let labels = [];
 
-        this.props.intensityData.filter( (data, index) =>
-            {
-                if(index % 20 == 0){
-                    dataArr.push(data.intensity0);
-                }
+    let dataArr = [];
+
+    this.props.intensityData.filter( (data, index) =>
+        {
+            if(index % 20 == 0){
+                dataArr.push(data.intensity0);
+                labels.push(index/20)
             }
-        )
+        }
+    )
 
         let dataArr2 = [];
 
@@ -30,7 +33,7 @@ export default class IntensityGraph extends Component {
 
         this.state = {
             data: {
-                labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+                labels: labels,
                 datasets: [
                     {
                         label: "Intensity of region 1",

@@ -52,7 +52,7 @@ const lineOptions = {
     scales: {
         xAxes: [{
             ticks: {
-                display: false
+                display: true
             }
         }]
     },
