@@ -79,24 +79,6 @@ const lineOptions = {
 
 }
 
-
-const barData = {
-    labels: ['ROI 1', 'ROI 2'],
-    datasets: [{
-        label: 'Healthy',
-        backgroundColor: "rgba(0, 255, 0, 0.75)",
-        data: [50, 40],
-    }, {
-        label: 'Benign',
-        backgroundColor: "rgba(0, 0, 255, 0.75)",
-        data: [20, 20],
-    }, {
-        label: 'Cancerous',
-        backgroundColor: "rgba(255, 0, 0, 0.75)",
-        data: [30, 40],
-    }]
-}
-
 const barOptions = {
     title: {
         display: true,
@@ -201,14 +183,17 @@ class App extends Component {
                                 })
                             }}>Home</button>
                             <button style={btnStyle} onClick={this.printDocument}> ScreenShot</button>
+                            
                             {this.state.graphOneStatus ? <LineGraph
                                 lineData={lineData}
                                 options={lineOptions}
                             /> : ""}
                             {this.state.graphTwoStatus ? <BarChart
-                                barData={barData}
+                                predictionData={this.props.predictionData}
                                 options={barOptions} /> : ""}
-                            {this.state.graphThreeStatus ? <IntensityGraph intensityData={this.props.intensityData} /> : ""}
+
+                            {this.state.graphThreeStatus ? <IntensityGraph 
+                                intensityData={this.props.intensityData} /> : ""}
                         </Col>
                         <Col size="1"></Col>
                         <Col size="31" style={style}>
