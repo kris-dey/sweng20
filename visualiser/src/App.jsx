@@ -86,8 +86,8 @@ class App extends Component {
             graphOneStatus: true,
             graphTwoStatus: false,
             graphThreeStatus: true,
-            ab: true,
-            cd: true,
+            ROI1: true,
+            ROI2: true,
             changes: false
         }
         console.log(this.props.intensityData);
@@ -164,17 +164,17 @@ class App extends Component {
 
         while (x < 21) {
             k.push("Frame " + x); x++;
-            if (this.state.ab) {
+            if (this.state.ROI1) {
                 y.push(getRandomArbitrary(0.4, 1))
 
             }
-            else if (!this.state.ab) {
+            else if (!this.state.ROI1) {
                 y.push(null)
             }
-            if (this.state.cd) {
+            if (this.state.ROI2) {
                 z.push(getRandomArbitrary(0, 0.6))
             }
-            else if (!this.state.cd) {
+            else if (!this.state.ROI2) {
                 z.push(null)
             }
         }
@@ -232,7 +232,7 @@ class App extends Component {
                                 this.setState({
                                     graphOneStatus: !this.state.graphOneStatus,
                                     graphTwoStatus: !this.state.graphTwoStatus,
-                                    graphThreeStatus: true,
+                                    graphThreeStatus: !this.state.graphThreeStatus,
 
                                 })
                             }}>Home</button>
@@ -245,10 +245,13 @@ class App extends Component {
                             {this.state.graphTwoStatus ? <BarChart
                                 barData={barData}
                                 options={barOptions} /> : ""}
-                            {this.state.graphThreeStatus ? <IntensityGraph intensityData={this.props.intensityData} /> : ""}
+                            {this.state.graphThreeStatus ? <IntensityGraph
+                                intensityData={this.props.intensityData}
+                                data0={this.state.ROI1}
+                                data1={this.state.ROI2} /> : ""}
                             <button style={btnStyle} onClick={() => {
                                 this.setState({
-                                    ab: !this.state.ab,
+                                    ROI1: !this.state.ROI1,
                                     changes: true,
 
                                 });
@@ -256,7 +259,7 @@ class App extends Component {
                             }}>ROI 1</button>
                             <button style={btnStyle} onClick={() => {
                                 this.setState({
-                                    cd: !this.state.cd,
+                                    ROI2: !this.state.ROI2,
                                     changes: true,
 
 

@@ -5,26 +5,32 @@ import './App.css';
 export default class IntensityGraph extends Component {
     constructor(props) {
         super(props)
-
-        //console.log(this.props.intensityData);
+        let data0 = this.props.data0;
+        let data1 = this.props.data1;
+        console.log(data0);
 
         let dataArr = [];
-
-        this.props.intensityData.filter((data, index) => {
-            if (index % 20 == 0) {
-                dataArr.push(data.intensity0);
+        if (data0) {
+            this.props.intensityData.filter((data, index) => {
+                if (index % 20 == 0) {
+                    dataArr.push(data.intensity0);
+                }
             }
+            )
         }
-        )
+
 
         let dataArr2 = [];
-
-        this.props.intensityData.filter((data, index) => {
-            if (index % 20 == 0) {
-                dataArr2.push(data.intensity1);
+        if (data1) {
+            this.props.intensityData.filter((data, index) => {
+                if (index % 20 == 0) {
+                    dataArr2.push(data.intensity1);
+                }
             }
+            )
         }
-        )
+
+
 
         console.log(dataArr);
 
@@ -46,6 +52,7 @@ export default class IntensityGraph extends Component {
             },
         }
     }
+
     render() {
         return (
             <div style={{ position: 'relative', width: 600 }}>
