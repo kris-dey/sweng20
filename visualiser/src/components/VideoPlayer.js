@@ -1244,7 +1244,7 @@ class VideoPlayer extends Component {
       <div className={classes.video}>
         <video
           id="surgeryVideo"
-          style={{ paddingTop: 50 }}
+          style={{ paddingTop: 5 }}
           width="900"
           height="500"
           src={videos}

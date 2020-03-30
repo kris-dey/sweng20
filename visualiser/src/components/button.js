@@ -89,7 +89,7 @@ class ButtonBoi extends Component {
       margin: 10,
       top: "auto",
       left: "auto",
-      position: "fixed",
+      position: "absolute",
       paddingRight: parseInt(this.state.width),
       paddingBottom: parseInt(this.state.height),
       paddingLeft: "0px",

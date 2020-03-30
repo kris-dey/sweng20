@@ -76,7 +76,7 @@ const lineOptions = {
             }
         }]
     },
-
+    responsive: false
 }
 
 
@@ -119,8 +119,8 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            graphOneStatus: true,
-            graphTwoStatus: false,
+            graphOneStatus: false,
+            graphTwoStatus: true,
             graphThreeStatus: true
         }
         console.log(this.props.intensityData);
@@ -201,10 +201,10 @@ class App extends Component {
                                 })
                             }}>Home</button>
                             <button style={btnStyle} onClick={this.printDocument}> ScreenShot</button>
-                            {this.state.graphOneStatus ? <LineGraph
+                            {/* {this.state.graphOneStatus ? <LineGraph
                                 lineData={lineData}
                                 options={lineOptions}
-                            /> : ""}
+                            /> : ""} */}
                             {this.state.graphTwoStatus ? <BarChart
                                 barData={barData}
                                 options={barOptions} /> : ""}
@@ -213,6 +213,10 @@ class App extends Component {
                         <Col size="1"></Col>
                         <Col size="31" style={style}>
                             <VideoPlayer />
+                            <LineGraph
+                                lineData={lineData}
+                                options={lineOptions}
+                            />
                         </Col>
                     </Grid>
                 </GymnastProvider>
