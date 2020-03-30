@@ -176,11 +176,11 @@ class App extends Component {
                         <Col size="16" style={style}>
                             {/* <button style={btnStyle} onClick={this.handleHomeClick}>Home</button> */}
                             <button style={btnStyle} onClick={() => {
-                                this.setState({
-                                    graphOneStatus: !this.state.graphOneStatus,
-                                    graphTwoStatus: !this.state.graphTwoStatus,
-                                    graphThreeStatus: true
-                                })
+                                // this.setState({
+                                //     graphOneStatus: !this.state.graphOneStatus,
+                                //     graphTwoStatus: !this.state.graphTwoStatus,
+                                //     graphThreeStatus: true
+                                // })
                             }}>Home</button>
                             <button style={btnStyle} onClick={this.printDocument}> ScreenShot</button>
                             {/* {this.state.graphOneStatus ? <LineGraph
