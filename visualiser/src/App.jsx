@@ -78,7 +78,8 @@ class App extends Component {
             graphTwoStatus: true,
             graphThreeStatus: true,
             intensityData: this.props.intensityData,
-            predictionData: this.props.predictionData
+            predictionData: this.props.predictionData,
+            activeROIs: new Array(this.props.intensityData.length).fill(true)
         }
         // console.log(this.props.intensityData);
         // console.log(this.props.predictionData);
@@ -90,6 +91,22 @@ class App extends Component {
         })
     }
 
+    buildLinegraphValues = () => {
+        let tmp = []
+        for (let i = 0; i < this.state.intensityData[0].length; i++)
+            tmp.push(new Object())
+
+        this.state.intensityData.forEach((e, i) => {
+            if (this.state.activeROIs[i]) {
+                e.forEach((f, j) => {
+                    // console.log({ j: j, f: f })
+                    tmp[j][`intensity${i}`] = f
+                })
+            }
+        })
+        console.log({ tmp: tmp, intense: this.props.intensityData })
+        return tmp
+    }
 
     renderBoxes = [
         {
@@ -212,7 +229,7 @@ class App extends Component {
                         <Col size="31" style={style}>
                             <VideoPlayer renderBoxes={this.renderBoxes} />
                             <LineGraph
-                                intensityData={this.props.intensityData}
+                                intensityData={this.buildLinegraphValues()}
                                 options={lineOptions}
                             />
                         </Col>
