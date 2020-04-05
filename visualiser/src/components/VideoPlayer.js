@@ -6,14 +6,6 @@ import Button from "./button";
 
 
 class VideoPlayer extends Component {
-
-  state = {
-    //TODO pass an array of locations and sizes to each 
-    renderBoxes: this.props.renderBoxes
-  }
-
-
-
   render() {
     return (
       <div className={classes.video}>
@@ -28,7 +20,7 @@ class VideoPlayer extends Component {
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         ></video>
-        {this.state.renderBoxes.map(e => {
+        {this.props.renderBoxes.map(e => {
           return <Button params={e} />;
         })}
         {

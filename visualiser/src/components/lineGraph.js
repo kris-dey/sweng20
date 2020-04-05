@@ -72,12 +72,55 @@ class LineGraph extends Component {
 
     }
   }
+  componentWillReceiveProps(nextProps) {
+    let labels = [];
+
+    let dataArr = [];
+
+    nextProps.intensityData.filter((data, index) => {
+      if (index % 1 == 0) {
+        dataArr.push(data.intensity0);
+        labels.push(index / 1);
+      }
+    }
+    )
+
+    let dataArr2 = [];
+
+    nextProps.intensityData.filter((data, index) => {
+      if (index % 1 == 0) {
+        dataArr2.push(data.intensity1);
+      }
+    }
+
+    )
+    this.setState({
+      lineData: {
+        labels: labels,
+        datasets: [
+          {
+            label: "Intensity of region 1",
+            backgroundColor: "rgba(0, 255, 0, 0.2)",
+            data: dataArr,
+            fill: false
+          },
+          {
+            label: "Intensity of region 2",
+            backgroundColor: "rgba(255, 255, 0, 0.2)",
+            data: dataArr2,
+            fill: false
+          }
+        ]
+      },
+      options: this.props.options
+    })
+  }
 
   render() {
     return (
       <div style={{ position: 'relative', width: 800, height: 250 }}>
         <Line
-          options={this.state.options}
+          options={this.props.options}
           data={this.state.lineData}
           width='890'
           height='250'

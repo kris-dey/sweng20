@@ -79,16 +79,33 @@ class App extends Component {
             graphThreeStatus: true,
             intensityData: this.props.intensityData,
             predictionData: this.props.predictionData,
-            activeROIs: new Array(this.props.intensityData.length).fill(true)
+            activeROIs: new Array(this.props.intensityData.length).fill(true),
+            graphRefresh: false
         }
         // console.log(this.props.intensityData);
         // console.log(this.props.predictionData);
     }
 
-    filterFunction = () => {
+    filterFunction = (graphIndex) => {
+        console.log("pls")
+        let tmp = this.state.activeROIs
+        tmp[graphIndex] = !tmp[graphIndex]
         this.setState({
-            graphTwoStatus: !this.state.graphTwoStatus
+            activeROIs: tmp,
+            rnd: this.state.rnd + 1
         })
+        this.setState({
+            graphRefresh: true
+        })
+        this.forceUpdate()
+        this.setState({
+            graphRefresh: false
+        })
+        this.forceUpdate()
+
+        // console.log(this.state.activeROIs)
+
+        // this.forceUpdate()
     }
 
     buildLinegraphValues = () => {
@@ -104,7 +121,7 @@ class App extends Component {
                 })
             }
         })
-        console.log({ tmp: tmp, intense: this.props.intensityData })
+        // console.log({ tmp: tmp, intense: this.props.intensityData })
         return tmp
     }
 
@@ -118,7 +135,7 @@ class App extends Component {
             ],
             heightArr: [94, 90, 90, 93, 94, 99, 94, 98, 96, 91, 96, 95, 98, 95, 96, 92, 97, 90, 93, 92, 91, 91, 97, 91, 97, 91, 95, 90, 95, 95, 99, 91, 97, 90, 95, 96, 91, 96, 92, 92, 98, 98, 99, 94, 97, 91, 97, 98, 90, 95, 92, 92, 97, 97, 94, 90, 92, 97, 90, 99, 95, 92, 91, 90, 93, 94, 90, 95, 98, 92, 99, 95, 93, 90, 94, 97, 96, 96, 93, 96, 93, 99, 93, 90, 99, 90, 91, 90, 97, 98, 96, 90, 93, 94, 91, 99, 90, 99, 96, 90, 90, 91, 96, 91, 97, 96, 96, 94, 94, 91, 97, 96, 93, 93, 90, 95, 92, 90, 93, 93, 92, 93, 94, 98, 98, 94, 95, 94, 92, 92, 97, 92, 95, 96, 99, 90, 98, 92, 99, 99, 98, 94, 93, 90, 91, 96, 92, 99, 92, 90, 99
             ],
-            onClick: this.filterFunction.bind(this)
+            onClick: this.filterFunction.bind(this, 0)
         },
         {
             rightArr: [290, 291, 296, 290, 290, 290, 297, 290, 291, 290, 296, 295, 293, 293, 295, 296, 299, 292, 299, 296, 299, 291, 292, 293, 293, 299, 299, 290, 296, 297, 299, 296, 298, 292, 293, 298, 297, 296, 299, 299, 290, 296, 298, 293, 291, 296, 291, 290, 297, 297, 292, 297, 297, 295, 297, 290, 294, 294, 291, 299, 291, 295, 292, 293, 299, 290, 298, 293, 293, 296, 296, 295, 294, 297, 290, 295, 297, 294, 293, 295, 298, 292, 293, 294, 290, 292, 297, 299, 297, 298, 291, 291, 294, 299, 290, 295, 298, 291, 291, 299, 298, 290, 295, 297, 292, 297, 291, 296, 296, 290, 291, 291, 290, 296, 294, 290, 296, 297, 295, 292, 295, 290, 293, 298, 292, 299, 296, 292, 298, 298, 299, 290, 294, 294, 293, 297, 298, 298, 294, 297, 296, 297, 296, 292, 294, 291, 294, 295, 293, 290, 292
@@ -129,7 +146,7 @@ class App extends Component {
             ],
             heightArr: [36, 35, 35, 30, 33, 33, 30, 30, 36, 38, 31, 33, 32, 38, 36, 31, 36, 32, 31, 32, 32, 31, 36, 33, 39, 30, 38, 32, 36, 30, 38, 38, 37, 33, 37, 33, 35, 31, 35, 32, 33, 34, 34, 38, 31, 32, 33, 35, 33, 32, 32, 30, 37, 33, 33, 30, 34, 33, 31, 33, 32, 30, 36, 33, 30, 39, 39, 38, 30, 38, 30, 31, 34, 36, 31, 36, 34, 34, 32, 30, 33, 31, 36, 39, 36, 32, 30, 32, 31, 37, 34, 37, 36, 39, 36, 33, 38, 36, 39, 31, 37, 35, 33, 34, 36, 30, 39, 39, 38, 37, 31, 33, 39, 33, 35, 38, 37, 36, 37, 32, 35, 33, 36, 37, 34, 36, 31, 37, 34, 39, 37, 34, 37, 35, 32, 32, 30, 34, 33, 38, 30, 33, 39, 39, 31, 38, 32, 34, 31, 36, 32
             ],
-            onClick: this.filterFunction.bind(this)
+            onClick: this.filterFunction.bind(this, 1)
         }
     ]
 
@@ -228,10 +245,10 @@ class App extends Component {
                         <Col size="1"></Col>
                         <Col size="31" style={style}>
                             <VideoPlayer renderBoxes={this.renderBoxes} />
-                            <LineGraph
+                            {this.state.graphRefresh ? "" : < LineGraph
                                 intensityData={this.buildLinegraphValues()}
                                 options={lineOptions}
-                            />
+                            />}
                         </Col>
                     </Grid>
                 </GymnastProvider>
