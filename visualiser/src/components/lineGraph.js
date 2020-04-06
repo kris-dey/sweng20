@@ -56,13 +56,15 @@ class LineGraph extends Component {
         datasets: [
           {
             label: "Intensity of region 1",
-            backgroundColor: "rgba(0, 255, 0, 0.2)",
+            backgroundColor: "rgba(0, 255, 0, 0.5)",
+            borderColor: "rgba(0, 255, 0, 0.5)",
             data: dataArr,
             fill: false
           },
           {
             label: "Intensity of region 2",
-            backgroundColor: "rgba(255, 255, 0, 0.2)",
+            backgroundColor: "rgba(0, 0, 255, 0.5)",
+            borderColor: "rgba(0, 0, 255, 0.5)",
             data: dataArr2,
             fill: false
           }
