@@ -32,8 +32,8 @@ class LineGraph extends Component {
 
     let dataArr = [];
 
-    this.props.intensityData.filter((data, index) => {
-      if (index % 1 == 0) {
+    this.props.intensityData.forEach((data, index) => {
+      if (index % 1 === 0) {
         dataArr.push(data.intensity0);
         labels.push(index / 1);
       }
@@ -42,8 +42,8 @@ class LineGraph extends Component {
 
     let dataArr2 = [];
 
-    this.props.intensityData.filter((data, index) => {
-      if (index % 1 == 0) {
+    this.props.intensityData.forEach((data, index) => {
+      if (index % 1 === 0) {
         dataArr2.push(data.intensity1);
       }
     }
@@ -51,6 +51,52 @@ class LineGraph extends Component {
     )
 
     this.state = {
+      lineData: {
+        labels: labels,
+        datasets: [
+          {
+            label: "Intensity of region 1",
+            backgroundColor: "rgba(0, 255, 0, 0.5)",
+            borderColor: "rgba(0, 255, 0, 0.5)",
+            data: dataArr,
+            fill: false
+          },
+          {
+            label: "Intensity of region 2",
+            backgroundColor: "rgba(0, 0, 255, 0.5)",
+            borderColor: "rgba(0, 0, 255, 0.5)",
+            data: dataArr2,
+            fill: false
+          }
+        ]
+      },
+      options: this.props.options
+
+    }
+  }
+  componentWillReceiveProps(nextProps) {
+    let labels = [];
+
+    let dataArr = [];
+
+    nextProps.intensityData.forEach((data, index) => {
+      if (index % 1 === 0) {
+        dataArr.push(data.intensity0);
+        labels.push(index / 1);
+      }
+    }
+    )
+
+    let dataArr2 = [];
+
+    nextProps.intensityData.forEach((data, index) => {
+      if (index % 1 === 0) {
+        dataArr2.push(data.intensity1);
+      }
+    }
+
+    )
+    this.setState({
       lineData: {
         labels: labels,
         datasets: [
@@ -69,15 +115,14 @@ class LineGraph extends Component {
         ]
       },
       options: this.props.options
-
-    }
+    })
   }
 
   render() {
     return (
       <div style={{ position: 'relative', width: 800, height: 250 }}>
         <Line
-          options={this.state.options}
+          options={this.props.options}
           data={this.state.lineData}
           width='890'
           height='250'

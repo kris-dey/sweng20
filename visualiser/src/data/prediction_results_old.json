@@ -34,5 +34,37 @@
         "delay_exp": 7.176402923471515,
         "l1_error_exp": 0.020543855488301312,
         "l2_error_exp": 0.024558499204355516
+    },
+    {
+        "prediction": "Healthy",
+        "class_probabilities": {
+            "Benign": 1.3462026510935695e-05,
+            "Healthy": 0.9999659391938864,
+            "Cancer": 2.0598779602217457e-05
+        },
+        "short_name": "Demo",
+        "roi_number": 3,
+        "time_const_exp": 2.7652001039839322,
+        "damping_exp": 0.8551199833276639,
+        "gain_exp": 9377.882975303184,
+        "inp_time_const_exp": 464.92851964055967,
+        "dc_exp": 389.33521426727197,
+        "delay_exp": 7.102583216395177,
+        "l1_error_exp": 0.02088947928199804,
+        "l2_error_exp": 0.02497128513398339
+    },
+    {
+        "short_name": "Demo",
+        "roi_number": 1,
+        "prediction": "No Prediction",
+        "class_probabilities": {},
+        "time_const_exp": 2.617059879992675,
+        "damping_exp": 0.6194719619847247,
+        "gain_exp": 32144.79237696208,
+        "inp_time_const_exp": 372.2972962362967,
+        "dc_exp": 664.1294628497076,
+        "delay_exp": 6.613875541451662,
+        "l1_error_exp": 0.013616053152226403,
+        "l2_error_exp": 0.016429033552108903
     }
 ]

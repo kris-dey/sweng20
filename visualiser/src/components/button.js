@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import classes from "./VideoPlayer.module.css";
-import { Animate } from "react-move";
-import _ from "lodash";
+// import { Animate } from "react-move";
+// import _ from "lodash";
 // import classes from "./VideoPlayer.module.css";
 // import { Container, Button, Link } from 'react-floating-action-button'
 
@@ -68,20 +68,7 @@ class ButtonBoi extends Component {
         height: this.state.heightArr[time],
       });
     }, 100);
-
-    // setInterval(this.UpdateLoc, 500)
   }
-  // UpdateLoc = function () {
-  //   let time = Math.round(parseFloat(document.getElementById("surgeryVideo").currentTime) * 10)
-  //   console.log(time)
-  //   console.log(this.state)
-  //   this.setState({
-  //     right: this.state.rightArr[time],
-  //     bottom: this.state.bottomArr[time],
-  //     width: this.state.widthArr[time],
-  //     height: this.state.heightArr[time]
-  //   })
-  // }
 
   render() {
     let subTstFloat = {
