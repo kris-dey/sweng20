@@ -6,7 +6,8 @@ class BarChart extends Component {
   constructor(props) {
     super(props)
 
-    let labels = this.props.HArray.map((e, i) => e = `ROI:${i}`)
+    // let labels = this.props.HArray.map((e, i) => e = `ROI:${i}`)
+    let labels = this.props.Labels.map(e => `ROI:${e}`)
     let health_data = this.props.HArray;
     let benign_data = this.props.BArray;
     let cancer_data = this.props.CArray;
@@ -33,7 +34,8 @@ class BarChart extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    let labels = nextProps.HArray.map((e, i) => e = `ROI:${i}`)
+    let labels = nextProps.Labels.map(e => `ROI:${e}`)
+
     let health_data = nextProps.HArray;
     let benign_data = nextProps.BArray;
     let cancer_data = nextProps.CArray;

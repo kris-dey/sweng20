@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
 import { Grid, Col, GymnastProvider } from 'gymnast'
-// import Box from './Box'
 import BarChart from './components/barChart'
 import LineGraph from './components/lineGraph'
-// import IntensityGraph from './intensityGraph'
-// import Chart from './Chart'
 import VideoPlayer from "./components/VideoPlayer"
 import html2canvas from 'html2canvas'
 import jsPDF from 'jspdf'
@@ -23,12 +20,6 @@ const outStyle = {
     marginTop: "S",
     marginRight: "S"
 }
-
-// const Cont = ({ children }) => (
-//     <Grid padding="XL L" justify="center">
-//         {children}
-//     </Grid>
-// )
 
 const btnStyle = {
     marginTop: '5px',
@@ -224,6 +215,10 @@ class App extends Component {
         return ret
     }
 
+    //returns an array of numbers representing the current ROIs
+    buildActiveList = () => {
+        return this.state.activeROIs.map((e, i) => { return e ? i : -1 }).filter((e) => { return e >= 0 })
+    }
 
     render() {
         return (
@@ -248,15 +243,14 @@ class App extends Component {
                                 CArray={this.buildPercentVals().Cancer}
                                 BArray={this.buildPercentVals().Benign}
                                 HArray={this.buildPercentVals().Healthy}
+                                Labels={this.buildActiveList()}
                                 options={barOptions} /> : ""}
 
-                            {/* {this.state.graphThreeStatus ? <IntensityGraph
-                                intensityData={this.props.intensityData} /> : ""} */}
                             <Percentages
-                                // tst={this.buildPercentVals()}
                                 CArray={this.buildPercentVals().Cancer}
                                 BArray={this.buildPercentVals().Benign}
                                 HArray={this.buildPercentVals().Healthy}
+                                Labels={this.buildActiveList()}
                             />
                             <Comments
                                 annotations=" *Enter comments here* "
