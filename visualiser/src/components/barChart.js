@@ -33,10 +33,10 @@ class BarChart extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    let labels = this.props.HArray.map((e, i) => e = `ROI:${i}`)
-    let health_data = this.props.HArray;
-    let benign_data = this.props.BArray;
-    let cancer_data = this.props.CArray;
+    let labels = nextProps.HArray.map((e, i) => e = `ROI:${i}`)
+    let health_data = nextProps.HArray;
+    let benign_data = nextProps.BArray;
+    let cancer_data = nextProps.CArray;
 
     this.setState({
       barData: {
@@ -55,7 +55,7 @@ class BarChart extends Component {
           data: cancer_data,
         }]
       },
-      options: this.props.options
+      options: nextProps.options
     })
   }
 
