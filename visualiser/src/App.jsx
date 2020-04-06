@@ -187,7 +187,7 @@ class App extends Component {
                         </Col>
                         <Col size="1"></Col>
                         <Col size="31" style={style}>
-                            <VideoPlayer />
+                            <VideoPlayer ROILocationData={this.props.ROILocationData}/>
                             <LineGraph
                                 intensityData={this.props.intensityData}
                                 options={lineOptions}

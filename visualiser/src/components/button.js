@@ -25,15 +25,19 @@ class ButtonBoi extends Component {
   state = {}
   constructor(props) {
     super(props);
+
+    console.log(this.props.params)
+
     this.state = {
-      rightArr: this.props.params.rightArr,
-      bottomArr: this.props.params.bottomArr,
-      widthArr: this.props.params.widthArr,
-      heightArr: this.props.params.heightArr,
-      right: this.props.params.rightArr[0],
-      bottom: this.props.params.bottomArr[0],
-      width: this.props.params.widthArr[0],
-      height: this.props.params.heightArr[0],
+      
+      rightArr: this.props.params.right,
+      bottomArr: this.props.params.bottom,
+      widthArr: this.props.params.width,
+      heightArr: this.props.params.height,
+      right: this.props.params.right[0],
+      bottom: this.props.params.bottom[0],
+      width: this.props.params.width[0],
+      height: this.props.params.height[0],
       onClick: this.props.params.onClick,
       vidName: this.props.params.vidName
     };
@@ -108,3 +112,4 @@ class ButtonBoi extends Component {
   }
 }
 export default ButtonBoi;
+
