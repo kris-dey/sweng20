@@ -34,15 +34,15 @@
   font-weight: bold;
   margin-top: 10px;
   color: hsl(0, 52%, 5%);
-  border: #f1f1f1 1px solid;
+  border: #181bd6ce 4px solid;
   padding: 100px 50px;
-  background-color: hsla(0, 0%, 0%, 0);
+  background-color: hsla(0, 0%, 1%, 0);
   font-size: 1.25rem;
   border-radius: 5px;
 }
 
 .button:hover {
-  background-color: #f10c0c;
+  background-color: #f32f2f;
   color: #000000c0;
 }
 

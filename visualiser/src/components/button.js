@@ -27,7 +27,10 @@ class ButtonBoi extends Component {
       bottom: this.props.params.bottom,
       width: this.props.params.width,
       height: this.props.params.height,
+      label: this.props.params.label,
       onClick: this.props.params.onClick,
+
+      //borderColor: this.props.params.borderColor
       //onmouseover: this.props.params.onmouseover
     };
     this.subTstFloat = {
@@ -41,7 +44,9 @@ class ButtonBoi extends Component {
       paddingBottom: parseInt(this.state.height),
       paddingLeft: "0px",
       paddingTop: "0px",
-      backgroundColor: "#f0f0" /*"(222,0,0)"*/
+      backgroundColor: "#f0f0", /*"(222,0,0)"*/
+      //label: parseInt(this.state.label)
+      // borderColor: parseInt(this.state.borderColor)
     };
     // console.log(this.state)
     // console.log(this.subTstFloat);
@@ -49,13 +54,18 @@ class ButtonBoi extends Component {
 
   render() {
     return (
+
       <div>
-        <button
+
+        <button label
           className={classes.button}
           style={this.subTstFloat}
           onClick={this.state.onClick}
+
         //onmouseover={this.state.onmouseover}
+
         ></button>
+
         {/* <button style={btnFloatStyle}>tstBoi</button> */}
       </div>
     );

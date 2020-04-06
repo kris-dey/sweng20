@@ -14,12 +14,17 @@ class VideoPlayer extends Component {
   }
 
   render() {
+
     let renderBoxes = [
       {
+        //label: "HI",
         right: 250,
         bottom: 500,
         width: 100,
         height: 100,
+
+        // borderColor: (222, 0, 0),
+
         onClick: () => {
           this.setState({
             R1: true,
@@ -27,12 +32,15 @@ class VideoPlayer extends Component {
 
           });
           alert(
-            Math.round(document.getElementById("surgeryVideo").currentTime) +
-            " seconds"
+            // Math.round(document.getElementById("surgeryVideo").currentTime) +
+            //" seconds"
+            "Region: ROI 1"
           );
+
           // console.log(document.getElementById("surgeryVideo").currentTime)
           // alert("BTN ONE")
-        }
+        },
+
       },
 
       {
@@ -40,6 +48,7 @@ class VideoPlayer extends Component {
         bottom: 620,
         width: 60,
         height: 40,
+        label: "hi",
         onClick: () => {
           this.setState({
             R1: false,
@@ -47,8 +56,9 @@ class VideoPlayer extends Component {
 
           });
           alert(
-            Math.round(document.getElementById("surgeryVideo").currentTime) +
-            " seconds"
+            // Math.round(document.getElementById("surgeryVideo").currentTime) +
+            //" seconds"
+            "Region: ROI 2"
           ); // console.log(document.getElementById("surgeryVideo").currentTime)
           // alert("BTN TWO")
           //this.props.width = this.props.width / 2;
@@ -65,9 +75,15 @@ class VideoPlayer extends Component {
     } else {
       lastRegionChecked = "Last Region Checked: None";
     }
+
+    let hsafi = "hi";
     return (
       <div className={classes.video}>
+
         <video
+
+
+
           id="surgeryVideo"
           style={{ paddingTop: 50 }}
           width="900"
@@ -77,7 +93,10 @@ class VideoPlayer extends Component {
           controls
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
+
+
         ></video>
+
         <button
           onClick={() => {
             alert(lastRegionChecked);
