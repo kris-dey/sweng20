@@ -14,5 +14,5 @@ const intensityData = rawData.map((e) => e.norm_times_series.map(a => a[0]))
 // const intensityData = intensityDataJSON
 const predictionData = predictionDataJSON
 
-ReactDOM.render(<App intensityData={intensityData} predictionData={predictionData} />, document.getElementById('root'))
+ReactDOM.render(<App rawData={rawData} intensityData={intensityData} predictionData={predictionData} />, document.getElementById('root'))
 // ReactDOM.render(<Export />, document.getElementById('root'))
