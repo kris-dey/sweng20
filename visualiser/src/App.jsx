@@ -245,7 +245,9 @@ class App extends Component {
                                 options={lineOptions}
                             /> : ""} */}
                             {this.state.graphTwoStatus ? <BarChart
-                                predictionData={this.state.predictionData}
+                                CArray={this.buildPercentVals().Cancer}
+                                BArray={this.buildPercentVals().Benign}
+                                HArray={this.buildPercentVals().Healthy}
                                 options={barOptions} /> : ""}
 
                             {/* {this.state.graphThreeStatus ? <IntensityGraph
