@@ -88,7 +88,7 @@ class ButtonBoi extends Component {
       <div>
         <button
           className={classes.button}
-          style={this.subTstFloat}
+          style={subTstFloat}
           onMouseEnter={() => {
             this.setState({ backgroundColor: "red" });
           }}
