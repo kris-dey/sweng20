@@ -109,7 +109,7 @@ class ButtonBoi extends Component {
             this.setState({ backgroundColor: "f0f0" });
           }}
           onClick={this.state.onClick}
-        ></button>
+        />
       </div>
     );
   }
