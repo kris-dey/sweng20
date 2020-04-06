@@ -22,7 +22,7 @@ import _ from "lodash";
 // }
 
 class ButtonBoi extends Component {
-  state = {}
+  state = {};
   constructor(props) {
     super(props);
     this.state = {
@@ -35,7 +35,8 @@ class ButtonBoi extends Component {
       width: this.props.params.widthArr[0],
       height: this.props.params.heightArr[0],
       onClick: this.props.params.onClick,
-      vidName: this.props.params.vidName
+      vidName: this.props.params.vidName,
+      backgroundColor: "red",
     };
     this.subTstFloat = {
       right: parseInt(this.state.right),
@@ -48,24 +49,25 @@ class ButtonBoi extends Component {
       paddingBottom: parseInt(this.state.height),
       paddingLeft: "0px",
       paddingTop: "0px",
-      backgroundColor: "#f0f0"
+      backgroundColor: "red",
     };
 
     // console.log(this.state)
     // console.log(this.subTstFloat);
 
     setInterval(() => {
-      let time = Math.round(parseFloat(document.getElementById("surgeryVideo").currentTime) * 1)
+      let time = Math.round(
+        parseFloat(document.getElementById("surgeryVideo").currentTime) * 1
+      );
       // console.log(time)
       // console.log(this.state)
       this.setState({
         right: this.state.rightArr[time],
         bottom: this.state.bottomArr[time],
         width: this.state.widthArr[time],
-        height: this.state.heightArr[time]
-      })
-    }, 100)
-
+        height: this.state.heightArr[time],
+      });
+    }, 100);
 
     // setInterval(this.UpdateLoc, 500)
   }
@@ -81,7 +83,6 @@ class ButtonBoi extends Component {
   //   })
   // }
 
-
   render() {
     let subTstFloat = {
       right: parseInt(this.state.right),
@@ -94,13 +95,20 @@ class ButtonBoi extends Component {
       paddingBottom: parseInt(this.state.height),
       paddingLeft: "0px",
       paddingTop: "0px",
-      backgroundColor: "#f0f0"
     };
     return (
       <div>
         <button
           className={classes.button}
-          style={subTstFloat}
+          style={Object.assign({}, this.subTstFloat, {
+            backgroundColor: this.state.backgroundColor,
+          })}
+          onMouseEnter={() => {
+            this.setState({ background: "Green" });
+          }}
+          onMouseLeave={() => {
+            this.setState({ background: "red" });
+          }}
           onClick={this.state.onClick}
         ></button>
       </div>
