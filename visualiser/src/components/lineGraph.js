@@ -36,8 +36,8 @@ class LineGraph extends Component {
     let dSet = this.props.intensityData.map((e, i) => {
       return {
         label: `ROI  ${this.props.Labels[i]}`,
-        backgroundColor: `rgba(${(i + 1) * 30}, ${(i + 1) * 30}, ${(i + 1) * 50}, 0.2)`,
-        borderColor: `rgba(${(i + 1) * 30}, ${(i + 1) * 30}, ${(i + 1) * 50}, 0.2)`,
+        backgroundColor: `rgba(${(labels[i]) * 40}, ${(labels[i] + 1) * 30}, ${(labels[i] + 1) * 100}, 0.4)`,
+        borderColor: `rgba(${(labels[i]) * 40}, ${(labels[i] + 1) * 30}, ${(labels[i] + 1) * 100}, 0.4)`,
         data: e,
         fill: false
       }
@@ -64,8 +64,8 @@ class LineGraph extends Component {
     return raw.map((e, i) => {
       return {
         label: `ROI  ${labels[i]}`,
-        backgroundColor: `rgba(0, 0, ${(i + 1) * 30}, 0.2)`,
-        borderColor: `rgba(0, 0, ${(i + 1) * 30}, 0.2)`,
+        backgroundColor: `rgba(${(labels[i]) * 40}, ${(labels[i] + 1) * 30}, ${(labels[i] + 1) * 100}, 0.4)`,
+        borderColor: `rgba(${(labels[i]) * 40}, ${(labels[i] + 1) * 30}, ${(labels[i] + 1) * 100}, 0.4)`,
         data: e,
         fill: false
       }
