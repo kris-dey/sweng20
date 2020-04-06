@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
 import { Grid, Col, GymnastProvider } from 'gymnast'
-// import Box from './Box'
 import BarChart from './components/barChart'
 import LineGraph from './components/lineGraph'
-// import IntensityGraph from './intensityGraph'
-// import Chart from './Chart'
 import VideoPlayer from "./components/VideoPlayer"
 import html2canvas from 'html2canvas'
 import jsPDF from 'jspdf'
@@ -23,12 +20,6 @@ const outStyle = {
     marginTop: "S",
     marginRight: "S"
 }
-
-// const Cont = ({ children }) => (
-//     <Grid padding="XL L" justify="center">
-//         {children}
-//     </Grid>
-// )
 
 const btnStyle = {
     marginTop: '5px',
@@ -94,35 +85,10 @@ class App extends Component {
             activeROIs: tmp,
             rnd: this.state.rnd + 1
         })
-        this.setState({
-            graphRefresh: true
-        })
-        this.forceUpdate()
-        this.setState({
-            graphRefresh: false
-        })
-        this.forceUpdate()
-
-        // console.log(this.state.activeROIs)
-
-        // this.forceUpdate()
     }
 
     buildLinegraphValues = () => {
-        let tmp = []
-        for (let i = 0; i < this.state.intensityData[0].length; i++)
-            tmp.push({})
-
-        this.state.intensityData.forEach((e, i) => {
-            if (this.state.activeROIs[i]) {
-                e.forEach((f, j) => {
-                    // console.log({ j: j, f: f })
-                    tmp[j][`intensity${i}`] = f
-                })
-            }
-        })
-        // console.log({ tmp: tmp, intense: this.props.intensityData })
-        return tmp
+        return this.state.intensityData.filter((e, i) => this.state.activeROIs[i])
     }
 
     renderBoxes = [
@@ -166,6 +132,11 @@ class App extends Component {
 
     }
 
+    resetSelection = () => {
+        this.setState({
+            activeROIs: new Array(this.state.intensityData.length).fill(true)
+        })
+    }
     printDocument() {
 
         let canvas = document.createElement('canvas')
@@ -224,6 +195,10 @@ class App extends Component {
         return ret
     }
 
+    //returns an array of numbers representing the current ROIs
+    buildActiveList = () => {
+        return this.state.activeROIs.map((e, i) => { return e ? i : -1 }).filter((e) => { return e >= 0 })
+    }
 
     render() {
         return (
@@ -232,13 +207,7 @@ class App extends Component {
                     <Grid style={outStyle}>
                         <Col size="16" style={style}>
                             {/* <button style={btnStyle} onClick={this.handleHomeClick}>Home</button> */}
-                            <button style={btnStyle} onClick={() => {
-                                // this.setState({
-                                //     graphOneStatus: !this.state.graphOneStatus,
-                                //     graphTwoStatus: !this.state.graphTwoStatus,
-                                //     graphThreeStatus: true
-                                // })
-                            }}>Home</button>
+                            <button style={btnStyle} onClick={this.resetSelection.bind(this)}>Home</button>
                             <button style={btnStyle} onClick={this.printDocument}> ScreenShot</button>
                             {/* {this.state.graphOneStatus ? <LineGraph
                                 intensityData={this.props.intensityData}
@@ -248,15 +217,14 @@ class App extends Component {
                                 CArray={this.buildPercentVals().Cancer}
                                 BArray={this.buildPercentVals().Benign}
                                 HArray={this.buildPercentVals().Healthy}
+                                Labels={this.buildActiveList()}
                                 options={barOptions} /> : ""}
 
-                            {/* {this.state.graphThreeStatus ? <IntensityGraph
-                                intensityData={this.props.intensityData} /> : ""} */}
                             <Percentages
-                                // tst={this.buildPercentVals()}
                                 CArray={this.buildPercentVals().Cancer}
                                 BArray={this.buildPercentVals().Benign}
                                 HArray={this.buildPercentVals().Healthy}
+                                Labels={this.buildActiveList()}
                             />
                             <Comments
                                 annotations=" *Enter comments here* "
@@ -267,6 +235,7 @@ class App extends Component {
                             <VideoPlayer renderBoxes={this.renderBoxes} />
                             {this.state.graphRefresh ? "" : < LineGraph
                                 intensityData={this.buildLinegraphValues()}
+                                Labels={this.buildActiveList()}
                                 options={lineOptions}
                             />}
                         </Col>
