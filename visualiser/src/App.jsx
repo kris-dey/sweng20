@@ -85,35 +85,10 @@ class App extends Component {
             activeROIs: tmp,
             rnd: this.state.rnd + 1
         })
-        this.setState({
-            graphRefresh: true
-        })
-        this.forceUpdate()
-        this.setState({
-            graphRefresh: false
-        })
-        this.forceUpdate()
-
-        // console.log(this.state.activeROIs)
-
-        // this.forceUpdate()
     }
 
     buildLinegraphValues = () => {
-        let tmp = []
-        for (let i = 0; i < this.state.intensityData[0].length; i++)
-            tmp.push({})
-
-        this.state.intensityData.forEach((e, i) => {
-            if (this.state.activeROIs[i]) {
-                e.forEach((f, j) => {
-                    // console.log({ j: j, f: f })
-                    tmp[j][`intensity${i}`] = f
-                })
-            }
-        })
-        // console.log({ tmp: tmp, intense: this.props.intensityData })
-        return tmp
+        return this.state.intensityData.filter((e, i) => this.state.activeROIs[i])
     }
 
     renderBoxes = [
@@ -157,6 +132,11 @@ class App extends Component {
 
     }
 
+    resetSelection = () => {
+        this.setState({
+            activeROIs: new Array(this.state.intensityData.length).fill(true)
+        })
+    }
     printDocument() {
 
         let canvas = document.createElement('canvas')
@@ -227,13 +207,7 @@ class App extends Component {
                     <Grid style={outStyle}>
                         <Col size="16" style={style}>
                             {/* <button style={btnStyle} onClick={this.handleHomeClick}>Home</button> */}
-                            <button style={btnStyle} onClick={() => {
-                                // this.setState({
-                                //     graphOneStatus: !this.state.graphOneStatus,
-                                //     graphTwoStatus: !this.state.graphTwoStatus,
-                                //     graphThreeStatus: true
-                                // })
-                            }}>Home</button>
+                            <button style={btnStyle} onClick={this.resetSelection.bind(this)}>Home</button>
                             <button style={btnStyle} onClick={this.printDocument}> ScreenShot</button>
                             {/* {this.state.graphOneStatus ? <LineGraph
                                 intensityData={this.props.intensityData}

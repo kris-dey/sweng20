@@ -14,9 +14,6 @@ class Categories extends React.Component {
 
 class Percentages extends React.Component {
     render() {
-        // let k = 1;
-
-        // const filtered = this.props.CArray.filter(n => n => 0);
         const items = this.props.Labels.map(e => <div>Area {e}</div>)
 
         const filtered1 = this.props.CArray.filter(n => n => 0);

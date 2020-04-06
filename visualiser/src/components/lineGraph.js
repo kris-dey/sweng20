@@ -28,27 +28,18 @@ class LineGraph extends Component {
       }
     });
 
-    let labels = [];
 
-    let dataArr = [];
+    let labels = [...new Array(this.props.intensityData[0].length).keys()]
+    let dataArr = this.props.intensityData[0];
+    let dataArr2 = this.props.intensityData[1];
 
-    this.props.intensityData.forEach((data, index) => {
-      if (index % 1 === 0) {
-        dataArr.push(data.intensity0);
-        labels.push(index / 1);
-      }
-    }
-    )
-
-    let dataArr2 = [];
-
-    this.props.intensityData.forEach((data, index) => {
-      if (index % 1 === 0) {
-        dataArr2.push(data.intensity1);
-      }
-    }
-
-    )
+    // this.props.intensityData[0].forEach((data, index) => {
+    //   if (index % 1 === 0) {
+    //     // dataArr.push(data.intensity0);
+    //     labels.push(index / 1);
+    //     // dataArr2.push(data.intensity1);
+    //   }
+    // })
 
     this.state = {
       lineData: {
@@ -74,28 +65,25 @@ class LineGraph extends Component {
 
     }
   }
-  componentWillReceiveProps(nextProps) {
-    let labels = [];
 
+  generateDatasetArr = () => {
+
+  }
+
+  componentWillReceiveProps(nextProps) {
+    let labels = [...new Array(this.props.intensityData[0].length).keys()]
     let dataArr = [];
+    let dataArr2 = [];
 
     nextProps.intensityData.forEach((data, index) => {
       if (index % 1 === 0) {
         dataArr.push(data.intensity0);
         labels.push(index / 1);
-      }
-    }
-    )
-
-    let dataArr2 = [];
-
-    nextProps.intensityData.forEach((data, index) => {
-      if (index % 1 === 0) {
         dataArr2.push(data.intensity1);
       }
-    }
+    })
 
-    )
+
     this.setState({
       lineData: {
         labels: labels,
