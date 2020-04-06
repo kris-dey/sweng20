@@ -36,7 +36,7 @@ class ButtonBoi extends Component {
       height: this.props.params.heightArr[0],
       onClick: this.props.params.onClick,
       vidName: this.props.params.vidName,
-      backgroundColor: "red",
+      backgroundColor: "f0f0",
     };
     this.subTstFloat = {
       right: parseInt(this.state.right),
@@ -49,7 +49,7 @@ class ButtonBoi extends Component {
       paddingBottom: parseInt(this.state.height),
       paddingLeft: "0px",
       paddingTop: "0px",
-      backgroundColor: "red",
+      backgroundColor: "f0f0",
     };
 
     // console.log(this.state)
@@ -95,19 +95,18 @@ class ButtonBoi extends Component {
       paddingBottom: parseInt(this.state.height),
       paddingLeft: "0px",
       paddingTop: "0px",
+      backgroundColor: "f0f0",
     };
     return (
       <div>
         <button
           className={classes.button}
-          style={Object.assign({}, this.subTstFloat, {
-            backgroundColor: this.state.backgroundColor,
-          })}
+          style={this.subTstFloat}
           onMouseEnter={() => {
-            this.setState({ background: "Green" });
+            this.setState({ backgroundColor: "red" });
           }}
           onMouseLeave={() => {
-            this.setState({ background: "red" });
+            this.setState({ backgroundColor: "f0f0" });
           }}
           onClick={this.state.onClick}
         ></button>
