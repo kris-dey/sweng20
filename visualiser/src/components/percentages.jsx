@@ -1,6 +1,6 @@
 import './percentagesAndComments.css';
-import React, { Component } from 'react';
-import { render } from '@testing-library/react';
+import React from 'react';
+// import { render } from '@testing-library/react';
 
 class Categories extends React.Component {
     render() {

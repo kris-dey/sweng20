@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { Grid, Col, GymnastProvider } from 'gymnast'
-import Box from './Box'
+// import Box from './Box'
 import BarChart from './components/barChart'
 import LineGraph from './components/lineGraph'
-import IntensityGraph from './intensityGraph'
-import Chart from './Chart'
+// import IntensityGraph from './intensityGraph'
+// import Chart from './Chart'
 import VideoPlayer from "./components/VideoPlayer"
 import html2canvas from 'html2canvas'
 import jsPDF from 'jspdf'
@@ -24,11 +24,11 @@ const outStyle = {
     marginRight: "S"
 }
 
-const Cont = ({ children }) => (
-    <Grid padding="XL L" justify="center">
-        {children}
-    </Grid>
-)
+// const Cont = ({ children }) => (
+//     <Grid padding="XL L" justify="center">
+//         {children}
+//     </Grid>
+// )
 
 const btnStyle = {
     marginTop: '5px',
@@ -87,7 +87,7 @@ class App extends Component {
     }
 
     filterFunction = (graphIndex) => {
-        console.log("pls")
+
         let tmp = this.state.activeROIs
         tmp[graphIndex] = !tmp[graphIndex]
         this.setState({
@@ -111,7 +111,7 @@ class App extends Component {
     buildLinegraphValues = () => {
         let tmp = []
         for (let i = 0; i < this.state.intensityData[0].length; i++)
-            tmp.push(new Object())
+            tmp.push({})
 
         this.state.intensityData.forEach((e, i) => {
             if (this.state.activeROIs[i]) {
@@ -207,6 +207,23 @@ class App extends Component {
             ;
     }
 
+    //returns array of arrays
+    //ret['Cancer'] = array of cancer percentages
+    //ret['Benign'] = array of benign percentages
+    //ret['Healthy'] = array of healthy percentages
+    buildPercentVals = () => {
+        let tmp = this.state.predictionData
+        let ret = { 'Healthy': [], 'Cancer': [], 'Benign': [] }
+        tmp.forEach((e, i) => {
+            if (this.state.activeROIs[i]) {
+                ret['Cancer'].push(Math.round(e['class_probabilities']['Cancer'] * 100))
+                ret['Benign'].push(Math.round(e['class_probabilities']['Benign'] * 100))
+                ret['Healthy'].push(Math.round(e['class_probabilities']['Healthy'] * 100))
+            }
+        })
+        return ret
+    }
+
 
     render() {
         return (
@@ -234,9 +251,10 @@ class App extends Component {
                             {/* {this.state.graphThreeStatus ? <IntensityGraph
                                 intensityData={this.props.intensityData} /> : ""} */}
                             <Percentages
-                                CArray={[93, 4, 37]}
-                                BArray={[0, 13, 44]}
-                                HArray={[7, 83, 19]}
+                                // tst={this.buildPercentVals()}
+                                CArray={this.buildPercentVals().Cancer}
+                                BArray={this.buildPercentVals().Benign}
+                                HArray={this.buildPercentVals().Healthy}
                             />
                             <Comments
                                 annotations=" *Enter comments here* "

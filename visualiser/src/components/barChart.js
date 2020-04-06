@@ -12,42 +12,41 @@ class BarChart extends Component {
     let benign_data = [];
     let cancer_data = [];
 
-    this.props.predictionData.filter( (data, index) =>
-      {
+    this.props.predictionData.forEach((data, index) => {
 
-        let total = (data.class_probabilities.Healthy + data.class_probabilities.Benign + data.class_probabilities.Cancer)/100
+      let total = (data.class_probabilities.Healthy + data.class_probabilities.Benign + data.class_probabilities.Cancer) / 100
 
-        health_data.push(data.class_probabilities.Healthy/total);
-        benign_data.push(data.class_probabilities.Benign/total);
-        cancer_data.push(data.class_probabilities.Cancer/total);
+      health_data.push(data.class_probabilities.Healthy / total);
+      benign_data.push(data.class_probabilities.Benign / total);
+      cancer_data.push(data.class_probabilities.Cancer / total);
 
-        var label = "ROI " + index.toString() + ": " + data.prediction;
-        labels.push(label);
-      }
+      var label = "ROI " + index.toString() + ": " + data.prediction;
+      labels.push(label);
+    }
     )
 
-    console.log(health_data);
-    console.log(benign_data);
-    console.log(cancer_data);
+    // console.log(health_data);
+    // console.log(benign_data);
+    // console.log(cancer_data);
 
 
     this.state = {
       barData: {
         labels: labels,
         datasets: [{
-            label: 'Healthy',
-            backgroundColor: "rgba(0, 255, 0, 0.75)",
-            data: health_data,
+          label: 'Healthy',
+          backgroundColor: "rgba(0, 255, 0, 0.75)",
+          data: health_data,
         }, {
-            label: 'Benign',
-            backgroundColor: "rgba(0, 0, 255, 0.75)",
-            data: benign_data,
+          label: 'Benign',
+          backgroundColor: "rgba(0, 0, 255, 0.75)",
+          data: benign_data,
         }, {
-            label: 'Cancerous',
-            backgroundColor: "rgba(255, 0, 0, 0.75)",
-            data: cancer_data,
+          label: 'Cancerous',
+          backgroundColor: "rgba(255, 0, 0, 0.75)",
+          data: cancer_data,
         }]
-    },
+      },
       options: this.props.options
     }
   }

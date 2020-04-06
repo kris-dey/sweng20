@@ -32,8 +32,8 @@ class LineGraph extends Component {
 
     let dataArr = [];
 
-    this.props.intensityData.filter((data, index) => {
-      if (index % 1 == 0) {
+    this.props.intensityData.forEach((data, index) => {
+      if (index % 1 === 0) {
         dataArr.push(data.intensity0);
         labels.push(index / 1);
       }
@@ -42,8 +42,8 @@ class LineGraph extends Component {
 
     let dataArr2 = [];
 
-    this.props.intensityData.filter((data, index) => {
-      if (index % 1 == 0) {
+    this.props.intensityData.forEach((data, index) => {
+      if (index % 1 === 0) {
         dataArr2.push(data.intensity1);
       }
     }
@@ -77,8 +77,8 @@ class LineGraph extends Component {
 
     let dataArr = [];
 
-    nextProps.intensityData.filter((data, index) => {
-      if (index % 1 == 0) {
+    nextProps.intensityData.forEach((data, index) => {
+      if (index % 1 === 0) {
         dataArr.push(data.intensity0);
         labels.push(index / 1);
       }
@@ -87,8 +87,8 @@ class LineGraph extends Component {
 
     let dataArr2 = [];
 
-    nextProps.intensityData.filter((data, index) => {
-      if (index % 1 == 0) {
+    nextProps.intensityData.forEach((data, index) => {
+      if (index % 1 === 0) {
         dataArr2.push(data.intensity1);
       }
     }

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import classes from "./VideoPlayer.module.css";
-import { Animate } from "react-move";
-import _ from "lodash";
+// import { Animate } from "react-move";
+// import _ from "lodash";
 // import classes from "./VideoPlayer.module.css";
 // import { Container, Button, Link } from 'react-floating-action-button'
 
