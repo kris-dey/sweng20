@@ -63,6 +63,8 @@ const barOptions = {
         }]
     }
 }
+
+
 class App extends Component {
     constructor(props) {
         super(props);
@@ -208,19 +210,16 @@ class App extends Component {
                 <GymnastProvider className="mt4" columns={48} >
                     <Grid style={outStyle}>
                         <Col size="16" style={style}>
-                            {/* <button style={btnStyle} onClick={this.handleHomeClick}>Home</button> */}
-                            <button style={btnStyle} onClick={this.resetSelection.bind(this)}><b>Home</b></button>
-                            <button style={btnStyle} onClick={this.printDocument}><b>ScreenShot</b></button>
-                            {/* {this.state.graphOneStatus ? <LineGraph
-                                intensityData={this.props.intensityData}
-                                options={lineOptions}
-                            /> : ""} */}
-                            {this.state.graphTwoStatus ? <BarChart
+                            <div style={{ maxHeight: "0px" }}>
+                                <button style={btnStyle} onClick={this.resetSelection.bind(this)}><b>Home</b></button>
+                                <button style={btnStyle} onClick={this.printDocument}><b>ScreenShot</b></button>
+                            </div>
+                            <BarChart
                                 CArray={this.buildPercentVals().Cancer}
                                 BArray={this.buildPercentVals().Benign}
                                 HArray={this.buildPercentVals().Healthy}
                                 Labels={this.buildActiveList()}
-                                options={barOptions} /> : ""}
+                                options={barOptions} />
 
                             <Percentages
                                 CArray={this.buildPercentVals().Cancer}

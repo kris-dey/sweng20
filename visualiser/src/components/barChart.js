@@ -64,11 +64,13 @@ class BarChart extends Component {
   render() {
 
     return (
-      <div style={{ position: 'relative', width: 470, height: 300 }}>
-        <Bar
-          options={this.state.options}
-          data={this.state.barData}
-        /> </div>
+
+      <Bar
+        options={this.state.options}
+        data={this.state.barData}
+        width={470}
+        height={270}
+      />
 
 
     )
