@@ -7,7 +7,7 @@ class Comments extends React.Component {
         return (
             <div className="Container">
                 <div className="Comments">
-                    <p> Annotations / Comments: </p>
+                    <p><b>Annotations / Comments:</b></p>
                     <div>{this.props.annotations}</div>
                 </div>
             </div>

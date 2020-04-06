@@ -267,9 +267,16 @@ class App extends Component {
                                         />
                                     </Row>
                                     <Row>
-                                        <Comments
-                                            annotations=" *Enter comments here* "
-                                        />
+                                            <GymnastProvider className="mt4" columns={20} >
+                                        <Grid style={outStyle}>
+                                        <Col size="1"></Col>
+                                            <Col size="18" style={style}>
+                                                <Comments
+                                                    annotations="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodmassa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt."
+                                                />
+                                            </Col>
+                                        </Grid>
+                                    </GymnastProvider>
                                     </Row>
                                 </Col>
                             </Container>
