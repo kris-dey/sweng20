@@ -62,7 +62,7 @@ class LineGraph extends Component {
           },
           {
             label: "Intensity of region 2",
-            backgroundColor: "rgba(255, 255, 0, 0.2)",
+            backgroundColor: "rgba(0, 0, 255, 0.2)",
             data: dataArr2,
             fill: false
           }
