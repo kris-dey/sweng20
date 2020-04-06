@@ -17,18 +17,18 @@ class Percentages extends React.Component {
         const items = this.props.Labels.map(e => <div>ROI {e}</div>)
 
         const filtered1 = this.props.CArray.filter(n => n => 0);
-        const items1 = filtered1.map(n => <div>{n}%</div>)
+        const items1 = filtered1.map(n => <div>&ensp;{n}%</div>)
 
         const filtered2 = this.props.BArray.filter(n => n => 0);
-        const items2 = filtered2.map(n => <div>{n}%</div>)
+        const items2 = filtered2.map(n => <div>&ensp;{n}%</div>)
 
         const filtered3 = this.props.HArray.filter(n => n => 0);
-        const items3 = filtered3.map(n => <div>{n}%</div>)
+        const items3 = filtered3.map(n => <div>&emsp;{n}%</div>)
 
         return (
             <div className="Container">
                 <Categories
-                    titles="Cancerous Benign Healthy"
+                    titles="&emsp;&emsp;Cancerous &ensp;Benign &ensp;Healthy"
                 />
                 <div className="Data">
                     <div className="AreaNames">
