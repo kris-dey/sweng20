@@ -235,6 +235,7 @@ class App extends Component {
                             <VideoPlayer renderBoxes={this.renderBoxes} />
                             {this.state.graphRefresh ? "" : < LineGraph
                                 intensityData={this.buildLinegraphValues()}
+                                Labels={this.buildActiveList()}
                                 options={lineOptions}
                             />}
                         </Col>

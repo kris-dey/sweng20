@@ -30,8 +30,18 @@ class LineGraph extends Component {
 
 
     let labels = [...new Array(this.props.intensityData[0].length).keys()]
-    let dataArr = this.props.intensityData[0];
-    let dataArr2 = this.props.intensityData[1];
+    // let dataArr = this.props.intensityData[0];
+    // let dataArr2 = this.props.intensityData[1];
+
+    let dSet = this.props.intensityData.map((e, i) => {
+      return {
+        label: `ROI  ${this.props.Labels[i]}`,
+        backgroundColor: `rgba(${(i + 1) * 30}, ${(i + 1) * 30}, ${(i + 1) * 50}, 0.2)`,
+        borderColor: `rgba(${(i + 1) * 30}, ${(i + 1) * 30}, ${(i + 1) * 50}, 0.2)`,
+        data: e,
+        fill: false
+      }
+    })
 
     // this.props.intensityData[0].forEach((data, index) => {
     //   if (index % 1 === 0) {
@@ -44,63 +54,32 @@ class LineGraph extends Component {
     this.state = {
       lineData: {
         labels: labels,
-        datasets: [
-          {
-            label: "Intensity of region 1",
-            backgroundColor: "rgba(0, 255, 0, 0.5)",
-            borderColor: "rgba(0, 255, 0, 0.5)",
-            data: dataArr,
-            fill: false
-          },
-          {
-            label: "Intensity of region 2",
-            backgroundColor: "rgba(0, 0, 255, 0.5)",
-            borderColor: "rgba(0, 0, 255, 0.5)",
-            data: dataArr2,
-            fill: false
-          }
-        ]
+        datasets: dSet
       },
       options: this.props.options
-
     }
   }
 
-  generateDatasetArr = () => {
-
+  generateDatasetArr = (raw, labels) => {
+    return raw.map((e, i) => {
+      return {
+        label: `ROI  ${labels[i]}`,
+        backgroundColor: `rgba(0, 0, ${(i + 1) * 30}, 0.2)`,
+        borderColor: `rgba(0, 0, ${(i + 1) * 30}, 0.2)`,
+        data: e,
+        fill: false
+      }
+    })
   }
 
   componentWillReceiveProps(nextProps) {
-    let labels = [...new Array(this.props.intensityData[0].length).keys()]
-    let dataArr = [];
-    let dataArr2 = [];
-
-    nextProps.intensityData.forEach((data, index) => {
-      if (index % 1 === 0) {
-        dataArr.push(data.intensity0);
-        labels.push(index / 1);
-        dataArr2.push(data.intensity1);
-      }
-    })
+    let labels = this.state.lineData.labels
 
 
     this.setState({
       lineData: {
         labels: labels,
-        datasets: [
-          {
-            label: "Intensity of region 1",
-            backgroundColor: "rgba(0, 255, 0, 0.2)",
-            data: dataArr,
-            fill: false
-          },
-          {
-            label: "Intensity of region 2",
-            backgroundColor: "rgba(255, 255, 0, 0.2)",
-            data: dataArr2,
-            fill: false
-          }
-        ]
+        datasets: this.generateDatasetArr(nextProps.intensityData, nextProps.Labels)
       },
       options: this.props.options
     })
