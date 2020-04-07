@@ -86,7 +86,7 @@ class App extends Component {
             // roi_location_bottom.push(data.initial_location[1]);
             // roi_location_width.push(data.initial_location[2]);
             // roi_location_height.push(data.initial_location[3]);
-    
+
             this.state.rawData[index].roi_location.forEach((location_data) => {
 
                 //Add proper offsets!!
@@ -95,8 +95,8 @@ class App extends Component {
                 box.widthArr.push(location_data[2]);
                 box.heightArr.push(location_data[3]);
 
-              }
-            )  
+            }
+            )
         })
     }
 
@@ -105,9 +105,9 @@ class App extends Component {
         let tmp = this.state.activeROIs
         tmp[graphIndex] = !tmp[graphIndex]
         this.setState({
-            activeROIs: tmp,
-            rnd: this.state.rnd + 1
+            activeROIs: tmp
         })
+        this.forceUpdate()
     }
 
     buildLinegraphValues = () => {
