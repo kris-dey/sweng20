@@ -13,6 +13,33 @@ import Comments from './components/Comments'
 import { Container, Row } from 'reactstrap';
 
 
+import 'rc-slider/assets/index.css';
+import 'rc-tooltip/assets/bootstrap.css';
+import Tooltip from 'rc-tooltip';
+import Slider from 'rc-slider';
+
+const createSliderWithTooltip = Slider.createSliderWithTooltip;
+const Range = createSliderWithTooltip(Slider.Range);
+const Handle = Slider.Handle;
+
+const handle = (props) => {
+  const { value, dragging, index, ...restProps } = props;
+  return (
+    <Tooltip
+      prefixCls="rc-slider-tooltip"
+      overlay={value}
+      visible={dragging}
+      placement="top"
+      key={index}
+    >
+      <Handle value={value} {...restProps} />
+    </Tooltip>
+  );
+};
+
+const wrapperStyle = { width: 400, margin: 40, height: 0};
+
+
 const style = {
     color: 'rgb(29, 31, 33)',
     backgroundColor: '#F8F8F8',
@@ -267,6 +294,12 @@ class App extends Component {
                                         />
                                     </Row>
                                     <Row>
+                                        <div style={wrapperStyle}>
+                                            <p><b><font size="5">Cancerous Threshold:</font></b></p>
+                                            <Slider min={0} max={100} defaultValue={50} handle={handle} />
+                                        </div>                                 
+                                    </Row>
+                                    <Row>
                                             <GymnastProvider className="mt4" columns={20} >
                                         <Grid style={outStyle}>
                                         <Col size="1"></Col>
@@ -278,6 +311,7 @@ class App extends Component {
                                         </Grid>
                                     </GymnastProvider>
                                     </Row>
+                                    
                                 </Col>
                             </Container>
                         </Col>

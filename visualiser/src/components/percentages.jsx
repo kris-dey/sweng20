@@ -20,7 +20,7 @@ class Percentages extends React.Component {
         const items = filtered.map(n => <div><b>ROI {k++}</b></div>)
 
         const filtered1 = this.props.CArray.filter(n => n => 0);
-        const items1 = filtered1.map(n => <div>&ensp;{n}%</div>)
+        const items1 = filtered1.map(n => <div>&emsp;{n}%</div>)
 
         const filtered2 = this.props.BArray.filter(n => n => 0);
         const items2 = filtered2.map(n => <div>&ensp;{n}%</div>)

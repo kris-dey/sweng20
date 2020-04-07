@@ -62,7 +62,7 @@ class BarChart extends Component {
   render() {
 
     return (
-      <div style={{ position: 'relative', width: 470, height: 250 }}>
+      <div style={{ position: 'relative', width: 470, height: 280 }}>
         <Bar
           options={this.state.options}
           data={this.state.barData}
