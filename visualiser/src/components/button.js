@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import classes from "./VideoPlayer.module.css";
+import data from "./prediction_results.json";
 // import { Animate } from "react-move";
 // import _ from "lodash";
 // import classes from "./VideoPlayer.module.css";
@@ -20,7 +21,7 @@ import classes from "./VideoPlayer.module.css";
 //   top: '1000px',
 //   right: '800px'
 // }
-
+var health = data.prediction;
 class ButtonBoi extends Component {
   state = {};
   constructor(props) {
@@ -90,7 +91,11 @@ class ButtonBoi extends Component {
           className={classes.button}
           style={subTstFloat}
           onMouseEnter={() => {
-            this.setState({ backgroundColor: "red" });
+            if (data.prediction == "Cancer") {
+              this.setState({ backgroundColor: "red" });
+            } else {
+              this.setState({ backgroundColor: "green" });
+            }
           }}
           onMouseLeave={() => {
             this.setState({ backgroundColor: "f0f0" });
