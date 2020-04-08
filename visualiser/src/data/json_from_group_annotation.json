@@ -5,7 +5,7 @@
     "device_type": "Stryker PINPOINT",
     "frame_rate": 30,
     "store_folder": "folder/to/store/stuff/including/this/json",
-    "comment": "this is a comment on the entire video",
+    "comment": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodmassa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.",
     "file_location": "some/path/to/the/video/file",
     "ROIs": [
         {

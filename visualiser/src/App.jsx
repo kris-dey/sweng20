@@ -255,9 +255,7 @@ class App extends Component {
                                                 <Grid style={outStyle}>
                                                 <Col size="1"></Col>
                                                     <Col size="19" style={style}>
-                                                        <Comments
-                                                            annotations="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodmassa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt."
-                                                        />
+                                                        <Comments annotations={this.props.videoComment}/>
                                                     </Col>
                                                 </Grid>
                                             </GymnastProvider>
