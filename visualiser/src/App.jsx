@@ -219,8 +219,8 @@ class App extends Component {
                                     <Col fluid="sm">
                                         <Row>
                                             <div style={{ maxHeight: "0px" }}>
-                                                <button style={btnStyle} onClick={this.resetSelection.bind(this)}><b>Home</b></button>
-                                                <button style={btnStyle} onClick={this.printDocument}><b>ScreenShot</b></button>
+                                                <button style={btnStyle} onClick={this.printDocument}><b>Screenshot</b></button>
+                                                <button style={btnStyle} onClick={this.resetSelection.bind(this)}><b>Clear Selections</b></button>
                                             </div>
                                         </Row>
 
@@ -260,8 +260,7 @@ class App extends Component {
                             </Container>
                         </Col>
                         <Col size="1"></Col>
-                        <Col size="31" style={style}>
-                            
+                        <Col size="31" style={style}>           
                             <VideoPlayer renderBoxes={this.state.renderBoxes} />
                             {this.state.graphRefresh ? "" : < LineGraph
                                 intensityData={this.buildLinegraphValues()}
