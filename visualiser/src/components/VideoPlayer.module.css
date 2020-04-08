@@ -34,10 +34,10 @@
   margin-top: 10px;
   color: hsl(0, 52%, 5%);
   border: #ffffff 3px solid;
-  padding: 100px 50px;
+  padding: 1000px 50px;
   background-color: hsla(0, 0%, 0%, 0);
   font-size: 1.25rem;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .button:hover {
