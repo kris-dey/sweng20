@@ -74,26 +74,38 @@ class App extends Component {
             predictionData: this.props.predictionData,
             rawData: this.props.rawData,
             activeROIs: new Array(this.props.intensityData.length).fill(true),
-            graphRefresh: false
+            graphRefresh: false,
+            renderBoxes: [],
         }
         // console.log(this.props.intensityData);
         // console.log(this.props.predictionData);
-        this.renderBoxes.forEach((box, index) => {
 
-            // roi_location_right.push(data.initial_location[0]);
-            // roi_location_bottom.push(data.initial_location[1]);
-            // roi_location_width.push(data.initial_location[2]);
-            // roi_location_height.push(data.initial_location[3]);
-    
-            this.state.rawData[index].roi_location.forEach((location_data) => {
+        //TODO: Add proper offsets!!
+        let rightOffset = 400;
+        let bottomOffset = 400;
 
-                //Add proper offsets!!
-                box.rightArr.push(location_data[0] + 130);
-                box.bottomArr.push(location_data[1] + 400);
+        this.state.rawData.forEach((data, index) => {
+
+            var box = {
+                rightArr: [],
+                bottomArr: [],
+                widthArr: [],
+                heightArr: [],
+                onClick: this.filterFunction.bind(this, index)
+            }
+
+            box.rightArr.push(data.initial_location[0][0] + rightOffset);
+            box.bottomArr.push(data.initial_location[0][1] + bottomOffset);
+            box.widthArr.push(data.initial_location[0][2]);
+            box.heightArr.push(data.initial_location[0][3]);
+
+            data.roi_location.forEach((location_data) => {
+                box.rightArr.push(location_data[0] + rightOffset);
+                box.bottomArr.push(location_data[1] + bottomOffset);
                 box.widthArr.push(location_data[2]);
                 box.heightArr.push(location_data[3]);
-
-              }
+              },
+            this.state.renderBoxes.push(box),
             )  
         })
     }
@@ -111,23 +123,7 @@ class App extends Component {
     buildLinegraphValues = () => {
         return this.state.intensityData.filter((e, i) => this.state.activeROIs[i])
     }
-
-    renderBoxes = [
-        {
-            rightArr: [],
-            bottomArr: [],
-            widthArr: [],
-            heightArr: [],
-            onClick: this.filterFunction.bind(this, 0)
-        },
-        {
-            rightArr: [],
-            bottomArr: [],
-            widthArr: [],
-            heightArr: [],
-            onClick: this.filterFunction.bind(this, 1)
-        }
-    ]
+        
 
     handleHomeClick(e) {
         e.preventDefault();
@@ -265,7 +261,8 @@ class App extends Component {
                         </Col>
                         <Col size="1"></Col>
                         <Col size="31" style={style}>
-                            <VideoPlayer renderBoxes={this.renderBoxes} />
+                            
+                            <VideoPlayer renderBoxes={this.state.renderBoxes} />
                             {this.state.graphRefresh ? "" : < LineGraph
                                 intensityData={this.buildLinegraphValues()}
                                 Labels={this.buildActiveList()}
