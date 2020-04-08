@@ -21,7 +21,7 @@ import data from "./prediction_results.json";
 //   top: '1000px',
 //   right: '800px'
 // }
-var health = data.prediction;
+//var health = data.prediction;
 class ButtonBoi extends Component {
   state = {};
   constructor(props) {
@@ -84,8 +84,7 @@ class ButtonBoi extends Component {
       paddingLeft: "0px",
       paddingTop: "0px",
       backgroundColor: "f0f0",
-      borderRadius: 5,
-      borderColor: "ffff",
+      borderRadius: 10,
     };
     return (
       <div>
@@ -93,10 +92,10 @@ class ButtonBoi extends Component {
           className={classes.button}
           style={subTstFloat}
           /*onMouseEnter={() => {
-            this.setState({ borderColor: "red" });
+            this.setState({ backgroundColor: "red" });
           }}
           onMouseLeave={() => {
-            this.setState({ borderColor: "ffff" });
+            this.setState({ backgroundColor: "ffff" });
           }}*/
           onClick={this.state.onClick}
         />
