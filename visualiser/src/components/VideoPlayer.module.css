@@ -17,7 +17,7 @@
   justify-content: right;
   align-items: righ;
   padding: 0;
-}*/
+}
 
 .SubContent {
   text-align: right;
@@ -25,15 +25,15 @@
 }
 
 .SubContent p {
-  color: #f10c0c;
+  color: #fc0c;
   font-size: 1.3rem;
-}
+}*/
 
 .button {
   font-weight: bold;
   margin-top: 10px;
   color: hsl(0, 52%, 5%);
-  border: #f1f1f1 1px solid;
+  border: #ffffff 3px solid;
   padding: 100px 50px;
   background-color: hsla(0, 0%, 0%, 0);
   font-size: 1.25rem;
@@ -41,7 +41,8 @@
 }
 
 .button:hover {
-  background-color: #f10c0c;
+  background-color: hsla(0, 0%, 0%, 0);
+  border: #f55442 3px solid;
   color: #000000c0;
 }
 
