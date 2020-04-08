@@ -64,14 +64,12 @@ class BarChart extends Component {
   render() {
 
     return (
-
       <Bar
         options={this.state.options}
         data={this.state.barData}
         width={470}
-        height={270}
+        height={300}
       />
-
 
     )
   }

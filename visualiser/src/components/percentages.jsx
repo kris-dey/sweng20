@@ -6,7 +6,7 @@ class Categories extends React.Component {
     render() {
         return (
             <header className="Categories">
-                <div>{this.props.titles}</div>
+                <div><b>{this.props.titles}</b></div>
             </header>
         );
     }
@@ -14,21 +14,21 @@ class Categories extends React.Component {
 
 class Percentages extends React.Component {
     render() {
-        const items = this.props.Labels.map(e => <div>ROI {e}</div>)
+        const items = this.props.Labels.map(e => <div><b>ROI {e}</b></div>)
 
         const filtered1 = this.props.CArray.filter(n => n => 0);
-        const items1 = filtered1.map(n => <div>&ensp;{n}%</div>)
+        const items1 = filtered1.map(n => <div>&emsp;{n}%</div>)
 
         const filtered2 = this.props.BArray.filter(n => n => 0);
         const items2 = filtered2.map(n => <div>&ensp;{n}%</div>)
 
         const filtered3 = this.props.HArray.filter(n => n => 0);
-        const items3 = filtered3.map(n => <div>&emsp;{n}%</div>)
+        const items3 = filtered3.map(n => <div>&emsp;&ensp;{n}%</div>)
 
         return (
             <div className="Container">
                 <Categories
-                    titles="&emsp;&emsp;Cancerous &ensp;Benign &ensp;Healthy"
+                    titles="&emsp;&emsp;Cancerous &emsp;Benign &emsp;Healthy"
                 />
                 <div className="Data">
                     <div className="AreaNames">

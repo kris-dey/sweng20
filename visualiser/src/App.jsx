@@ -7,7 +7,7 @@ import html2canvas from 'html2canvas'
 import jsPDF from 'jspdf'
 import Percentages from './components/percentages'
 import Comments from './components/Comments'
-
+import { Container, Row } from 'reactstrap';
 
 const style = {
     color: 'rgb(29, 31, 33)',
@@ -29,9 +29,7 @@ const btnStyle = {
     paddingRight: "10px",
     border: '1px solid #000000',
     borderRadius: '3px',
-    backgroundColor: 'rgb(147, 219, 255)',
-    maxHeight: '40px',
-    height: '40px'
+    backgroundColor: '#FFFFFF'
 }
 
 const lineOptions = {
@@ -221,26 +219,49 @@ class App extends Component {
                 <GymnastProvider className="mt4" columns={48} >
                     <Grid style={outStyle}>
                         <Col size="16" style={style}>
-                            <div style={{ maxHeight: "0px" }}>
-                                <button style={btnStyle} onClick={this.resetSelection.bind(this)}><b>Home</b></button>
-                                <button style={btnStyle} onClick={this.printDocument}><b>ScreenShot</b></button>
-                            </div>
-                            <BarChart
-                                CArray={this.buildPercentVals().Cancer}
-                                BArray={this.buildPercentVals().Benign}
-                                HArray={this.buildPercentVals().Healthy}
-                                Labels={this.buildActiveList()}
-                                options={barOptions} />
+                            <Container>
+                                    <Col fluid="sm">
+                                        <Row>
+                                            <div style={{ maxHeight: "0px" }}>
+                                                <button style={btnStyle} onClick={this.resetSelection.bind(this)}><b>Home</b></button>
+                                                <button style={btnStyle} onClick={this.printDocument}><b>ScreenShot</b></button>
+                                            </div>
+                                        </Row>
 
-                            <Percentages
-                                CArray={this.buildPercentVals().Cancer}
-                                BArray={this.buildPercentVals().Benign}
-                                HArray={this.buildPercentVals().Healthy}
-                                Labels={this.buildActiveList()}
-                            />
-                            <Comments
-                                annotations=" *Enter comments here* "
-                            />
+                                        {/* Spacing between the buttons and the bar graph.*/}
+                                        <Row><div style={{height: 20}}></div></Row>
+
+                                        <Row>
+                                            <BarChart
+                                                CArray={this.buildPercentVals().Cancer}
+                                                BArray={this.buildPercentVals().Benign}
+                                                HArray={this.buildPercentVals().Healthy}
+                                                Labels={this.buildActiveList()}
+                                                options={barOptions} />
+                                        </Row>
+
+                                        {/* Spacing between the bar graph and the percentage table.*/}
+                                        <Row><div style={{height: 320}}></div></Row>
+                                        <Row>
+                                            <Percentages
+                                                CArray={this.buildPercentVals().Cancer}
+                                                BArray={this.buildPercentVals().Benign}
+                                                HArray={this.buildPercentVals().Healthy}
+                                                Labels={this.buildActiveList()}
+                                            />
+                                        </Row>
+                                        <Row>
+                                            <GymnastProvider className="mt4" columns={20} >
+                                                <Grid style={outStyle}>
+                                                <Col size="1"></Col>
+                                                    <Col size="19" style={style}>
+                                                        <Comments annotations={this.props.videoComment}/>
+                                                    </Col>
+                                                </Grid>
+                                            </GymnastProvider>
+                                        </Row>
+                                    </Col>
+                            </Container>
                         </Col>
                         <Col size="1"></Col>
                         <Col size="31" style={style}>

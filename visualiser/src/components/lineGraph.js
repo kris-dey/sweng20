@@ -92,7 +92,7 @@ class LineGraph extends Component {
           options={this.props.options}
           data={this.state.lineData}
           width='890'
-          height='250'
+          height='300'
         />
       </div>
 
