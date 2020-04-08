@@ -84,6 +84,8 @@ class ButtonBoi extends Component {
       paddingLeft: "0px",
       paddingTop: "0px",
       backgroundColor: "f0f0",
+      borderRadius: 5,
+      borderColor: "#ffff",
     };
     return (
       <div>
@@ -91,14 +93,10 @@ class ButtonBoi extends Component {
           className={classes.button}
           style={subTstFloat}
           onMouseEnter={() => {
-            if (data.prediction == "Cancer") {
-              this.setState({ backgroundColor: "red" });
-            } else {
-              this.setState({ backgroundColor: "green" });
-            }
+            this.setState({ borderColor: "red" });
           }}
           onMouseLeave={() => {
-            this.setState({ backgroundColor: "f0f0" });
+            this.setState({ borderColor: "ffff" });
           }}
           onClick={this.state.onClick}
         />
