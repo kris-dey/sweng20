@@ -29,7 +29,7 @@
   font-size: 1.3rem;
 }*/
 
-/*.button {
+.button {
   font-weight: bold;
   margin-top: 10px;
   color: hsl(0, 52%, 5%);
@@ -46,8 +46,9 @@
   color: #000000c0;
 }
 
-/*body {
+body {
   /* background-color: #2980b9; */
+}
 
 .video {
   /* position: absolute; */

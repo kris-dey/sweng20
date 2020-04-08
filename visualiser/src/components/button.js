@@ -85,19 +85,19 @@ class ButtonBoi extends Component {
       paddingTop: "0px",
       backgroundColor: "f0f0",
       borderRadius: 5,
-      borderColor: "#ffff",
+      borderColor: "ffff",
     };
     return (
       <div>
         <button
           className={classes.button}
           style={subTstFloat}
-          onMouseEnter={() => {
+          /*onMouseEnter={() => {
             this.setState({ borderColor: "red" });
           }}
           onMouseLeave={() => {
             this.setState({ borderColor: "ffff" });
-          }}
+          }}*/
           onClick={this.state.onClick}
         />
       </div>
