@@ -51,7 +51,7 @@ export default class IntensityGraph extends Component {
     }
     render() {
         return (
-            <div style={{ position: 'relative', width: 600 }}>
+            <div style={{ position: 'relative', width: 600, height: 300 }}>
                 <Line
                     options={{
                         responsive: true
