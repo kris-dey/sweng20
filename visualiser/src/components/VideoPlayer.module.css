@@ -38,16 +38,7 @@
   background-color: hsla(0, 0%, 0%, 0);
   font-size: 1.25rem;
   border-radius: 10px;
-}
-
-.button:hover {
-  background-color: hsla(0, 0%, 0%, 0);
-  border: #f55442 3px solid;
-  color: #000000c0;
-}
-
-body {
-  /* background-color: #2980b9; */
+  border: #3b6ffd 3px solid;
 }
 
 .video {
