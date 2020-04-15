@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
 // import Export from './ExportScreenshot'
-import rawData from "./data/Output.json"
+import rawData from "./data/Output_offset.json"
 // import intensityDataJSON from "./data/intensity_results.json"
 import predictionDataJSON from "./data/prediction_results.json"
 import commentJSON from './data/json_from_group_annotation.json'

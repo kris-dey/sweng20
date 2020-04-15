@@ -79,9 +79,9 @@ class App extends Component {
         }
 
 
-        //these offsets exist because the data does not relate to the video
-        let leftOffset = 250;
-        let topOffset = 100;
+
+        let leftOffset = 0;
+        let topOffset = 0;
 
         this.state.rawData.forEach((data, index) => {
 
