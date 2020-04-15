@@ -57,7 +57,7 @@ class ButtonBoi extends Component {
         width: this.state.widthArr[time],
         height: this.state.heightArr[time],
       });
-    }, 100);
+    }, 20);
   }
 
   render() {

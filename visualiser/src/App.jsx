@@ -79,9 +79,9 @@ class App extends Component {
         }
 
 
-        //TODO: Add proper offsets!!
-        let rightOffset = 0;
-        let bottomOffset = 0;
+        //these offsets exist because the data does not relate to the video
+        let leftOffset = 250;
+        let topOffset = 100;
 
         this.state.rawData.forEach((data, index) => {
 
@@ -94,14 +94,14 @@ class App extends Component {
                 prediction: this.state.predictionData[index].prediction,
             }
 
-            box.leftArr.push(data.initial_location[0][0] + rightOffset);
-            box.topArr.push(data.initial_location[0][1] + bottomOffset);
+            box.leftArr.push(data.initial_location[0][0] + leftOffset);
+            box.topArr.push(data.initial_location[0][1] + topOffset);
             box.widthArr.push(data.initial_location[0][2]);
             box.heightArr.push(data.initial_location[0][3]);
 
             data.roi_location.forEach((location_data) => {
-                box.leftArr.push(location_data[0] + rightOffset);
-                box.topArr.push(location_data[1] + bottomOffset);
+                box.leftArr.push(location_data[0] + leftOffset);
+                box.topArr.push(location_data[1] + topOffset);
                 box.widthArr.push(location_data[2]);
                 box.heightArr.push(location_data[3]);
             },
