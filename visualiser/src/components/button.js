@@ -6,55 +6,54 @@ class ButtonBoi extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      rightArr: this.props.params.rightArr,
-      bottomArr: this.props.params.bottomArr,
+      leftArr: this.props.params.leftArr,
+      topArr: this.props.params.topArr,
       widthArr: this.props.params.widthArr,
       heightArr: this.props.params.heightArr,
-      right: this.props.params.rightArr[0],
-      bottom: this.props.params.bottomArr[0],
+      left: this.props.params.leftArr[0],
+      top: this.props.params.topArr[0],
       width: this.props.params.widthArr[0],
       height: this.props.params.heightArr[0],
       onClick: this.props.params.onClick,
       vidName: this.props.params.vidName,
       buttonCSS: null,
       prediction: this.props.params.prediction,
-      backgroundColor: "f0f0",
+      backgroundColor: "f0f0"
     };
-    
-    if(this.state.prediction === "Healthy"){
-      this.state.buttonCSS = classes.buttonHealthy;
-    } else if(this.state.prediction === "Benign"){
-      this.state.buttonCSS = classes.buttonBenign;
-    } else if(this.state.prediction === "Cancer"){
-      this.state.buttonCSS = classes.buttonCancer;
-    }
-    
     this.subTstFloat = {
-      right: parseInt(this.state.right),
-      bottom: parseInt(this.state.bottom),
+      left: parseInt(this.state.left),
+      top: parseInt(this.state.top),
       margin: 10,
-      top: "auto",
-      left: "auto",
+      bottom: "auto",
+      right: "auto",
       position: "fixed",
       paddingRight: parseInt(this.state.width),
       paddingBottom: parseInt(this.state.height),
       paddingLeft: "0px",
       paddingTop: "0px",
+      prediction: this.props.params.prediction,
       backgroundColor: "f0f0",
     };
 
-    // console.log(this.state)
-    // console.log(this.subTstFloat);
+    if (this.state.prediction === "Healthy") {
+      this.state.buttonCSS = classes.buttonHealthy;
+    } else if (this.state.prediction === "Benign") {
+      this.state.buttonCSS = classes.buttonBenign;
+    } else if (this.state.prediction === "Cancer") {
+      this.state.buttonCSS = classes.buttonCancer;
+    }
 
     setInterval(() => {
       let time = Math.round(
         parseFloat(document.getElementById("surgeryVideo").currentTime) * 1
       );
+
+      let loc = document.getElementById('surgeryVideo').getBoundingClientRect()
       // console.log(time)
       // console.log(this.state)
       this.setState({
-        right: this.state.rightArr[time],
-        bottom: this.state.bottomArr[time],
+        left: loc.x + this.state.leftArr[time],
+        top: loc.y + this.state.topArr[time],
         width: this.state.widthArr[time],
         height: this.state.heightArr[time],
       });
@@ -63,18 +62,18 @@ class ButtonBoi extends Component {
 
   render() {
     let subTstFloat = {
-      right: parseInt(this.state.right),
-      bottom: parseInt(this.state.bottom),
+      left: parseInt(this.state.left),
+      top: parseInt(this.state.top),
       margin: 10,
-      top: "auto",
-      left: "auto",
+      bottom: "auto",
+      right: "auto",
       position: "absolute",
       paddingRight: parseInt(this.state.width),
       paddingBottom: parseInt(this.state.height),
       paddingLeft: "0px",
       paddingTop: "0px",
       backgroundColor: "f0f0",
-      borderColor:"ffff",
+      borderColor: "ffff",
       borderRadius: 10,
     };
     return (

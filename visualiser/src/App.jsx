@@ -77,37 +77,36 @@ class App extends Component {
             graphRefresh: false,
             renderBoxes: [],
         }
-        // console.log(this.props.intensityData);
-        // console.log(this.props.predictionData);
+
 
         //TODO: Add proper offsets!!
-        let rightOffset = 400;
-        let bottomOffset = 400;
+        let rightOffset = 0;
+        let bottomOffset = 0;
 
         this.state.rawData.forEach((data, index) => {
 
             var box = {
-                rightArr: [],
-                bottomArr: [],
+                leftArr: [],
+                topArr: [],
                 widthArr: [],
                 heightArr: [],
                 onClick: this.filterFunction.bind(this, index),
                 prediction: this.state.predictionData[index].prediction,
             }
 
-            box.rightArr.push(data.initial_location[0][0] + rightOffset);
-            box.bottomArr.push(data.initial_location[0][1] + bottomOffset);
+            box.leftArr.push(data.initial_location[0][0] + rightOffset);
+            box.topArr.push(data.initial_location[0][1] + bottomOffset);
             box.widthArr.push(data.initial_location[0][2]);
             box.heightArr.push(data.initial_location[0][3]);
 
             data.roi_location.forEach((location_data) => {
-                box.rightArr.push(location_data[0] + rightOffset);
-                box.bottomArr.push(location_data[1] + bottomOffset);
+                box.leftArr.push(location_data[0] + rightOffset);
+                box.topArr.push(location_data[1] + bottomOffset);
                 box.widthArr.push(location_data[2]);
                 box.heightArr.push(location_data[3]);
-              },
-            this.state.renderBoxes.push(box),
-            )  
+            },
+                this.state.renderBoxes.push(box),
+            )
         })
     }
 
@@ -124,7 +123,7 @@ class App extends Component {
     buildLinegraphValues = () => {
         return this.state.intensityData.filter((e, i) => this.state.activeROIs[i])
     }
-        
+
 
     handleHomeClick(e) {
         e.preventDefault();
@@ -217,56 +216,56 @@ class App extends Component {
                     <Grid style={outStyle}>
                         <Col size="16" style={style}>
                             <Container>
-                                    <Col fluid="sm">
-                                        <Row>
-                                            <div style={{ maxHeight: "0px" }}>
-                                                <button style={btnStyle} onClick={this.printDocument}><b>Screenshot</b></button>
-                                                <button style={btnStyle} onClick={this.resetSelection.bind(this)}><b>Clear Selections</b></button>
-                                            </div>
-                                        </Row>
+                                <Col fluid="sm">
+                                    <Row>
+                                        <div style={{ maxHeight: "0px" }}>
+                                            <button style={btnStyle} onClick={this.printDocument}><b>Screenshot</b></button>
+                                            <button style={btnStyle} onClick={this.resetSelection.bind(this)}><b>Clear Selections</b></button>
+                                        </div>
+                                    </Row>
 
-                                        {/* Spacing between the buttons and the bar graph.*/}
-                                        <Row><div style={{height: 20}}></div></Row>
+                                    {/* Spacing between the buttons and the bar graph.*/}
+                                    <Row><div style={{ height: 20 }}></div></Row>
 
-                                        <Row>
-                                            <BarChart
-                                                CArray={this.buildPercentVals().Cancer}
-                                                BArray={this.buildPercentVals().Benign}
-                                                HArray={this.buildPercentVals().Healthy}
-                                                Labels={this.buildActiveList()}
-                                                options={barOptions} />
-                                        </Row>
+                                    <Row>
+                                        <BarChart
+                                            CArray={this.buildPercentVals().Cancer}
+                                            BArray={this.buildPercentVals().Benign}
+                                            HArray={this.buildPercentVals().Healthy}
+                                            Labels={this.buildActiveList()}
+                                            options={barOptions} />
+                                    </Row>
 
-                                        {/* Spacing between the bar graph and the percentage table.*/}
-                                        <Row><div style={{height: 320}}></div></Row>
-                                        <Row>
-                                            <Percentages
-                                                CArray={this.buildPercentVals().Cancer}
-                                                BArray={this.buildPercentVals().Benign}
-                                                HArray={this.buildPercentVals().Healthy}
-                                                Labels={this.buildActiveList()}
-                                            />
-                                        </Row>
-                                        <Row>
-                                            <GymnastProvider className="mt4" columns={20} >
-                                                <Grid style={outStyle}>
+                                    {/* Spacing between the bar graph and the percentage table.*/}
+                                    <Row><div style={{ height: 320 }}></div></Row>
+                                    <Row>
+                                        <Percentages
+                                            CArray={this.buildPercentVals().Cancer}
+                                            BArray={this.buildPercentVals().Benign}
+                                            HArray={this.buildPercentVals().Healthy}
+                                            Labels={this.buildActiveList()}
+                                        />
+                                    </Row>
+                                    <Row>
+                                        <GymnastProvider className="mt4" columns={20} >
+                                            <Grid style={outStyle}>
                                                 <Col size="1"></Col>
-                                                    <Col size="19" style={style}>
-                                                        <Comments annotations={this.props.videoComment}/>
-                                                    </Col>
-                                                </Grid>
-                                            </GymnastProvider>
-                                        </Row>
-                                    </Col>
+                                                <Col size="19" style={style}>
+                                                    <Comments annotations={this.props.videoComment} />
+                                                </Col>
+                                            </Grid>
+                                        </GymnastProvider>
+                                    </Row>
+                                </Col>
                             </Container>
                         </Col>
                         <Col size="1"></Col>
-                        <Col size="31" style={style}>           
+                        <Col size="31" style={style}>
                             <VideoPlayer renderBoxes={this.state.renderBoxes} />
 
                             <div className="Container">
                                 <b> <br />
-                                <font color="3b6ffd">Cancerous</font> <font color="CCCC00">&emsp;Benign</font> <font color="black">&emsp;Healthy</font>
+                                    <font color="3b6ffd">Cancerous</font> <font color="CCCC00">&emsp;Benign</font> <font color="black">&emsp;Healthy</font>
                                 </b>
                             </div>
 
