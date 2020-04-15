@@ -262,6 +262,13 @@ class App extends Component {
                         <Col size="1"></Col>
                         <Col size="31" style={style}>           
                             <VideoPlayer renderBoxes={this.state.renderBoxes} />
+
+                            <div className="Container">
+                                <b> <br />
+                                <font color="3b6ffd">Cancerous</font> <font color="CCCC00">&emsp;Benign</font> <font color="black">&emsp;Healthy</font>
+                                </b>
+                            </div>
+
                             {this.state.graphRefresh ? "" : < LineGraph
                                 intensityData={this.buildLinegraphValues()}
                                 Labels={this.buildActiveList()}
