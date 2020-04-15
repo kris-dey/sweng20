@@ -29,7 +29,7 @@
   font-size: 1.3rem;
 }*/
 
-.button {
+.buttonCancer {
   font-weight: bold;
   margin-top: 10px;
   color: hsl(0, 52%, 5%);
@@ -39,6 +39,30 @@
   font-size: 1.25rem;
   border-radius: 10px;
   border: #3b6ffd 3px solid;
+}
+
+.buttonHealthy {
+  font-weight: bold;
+  margin-top: 10px;
+  color: hsl(0, 52%, 5%);
+  border: #ffffff 3px solid;
+  padding: 1000px 50px;
+  background-color: hsla(0, 0%, 0%, 0);
+  font-size: 1.25rem;
+  border-radius: 10px;
+  border: #000000 3px solid;
+}
+
+.buttonBenign {
+  font-weight: bold;
+  margin-top: 10px;
+  color: hsl(0, 52%, 5%);
+  border: #ffffff 3px solid;
+  padding: 1000px 50px;
+  background-color: hsla(0, 0%, 0%, 0);
+  font-size: 1.25rem;
+  border-radius: 10px;
+  border: #CCCC00 3px solid;
 }
 
 .video {

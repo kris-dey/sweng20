@@ -91,7 +91,8 @@ class App extends Component {
                 bottomArr: [],
                 widthArr: [],
                 heightArr: [],
-                onClick: this.filterFunction.bind(this, index)
+                onClick: this.filterFunction.bind(this, index),
+                prediction: this.state.predictionData[index].prediction,
             }
 
             box.rightArr.push(data.initial_location[0][0] + rightOffset);

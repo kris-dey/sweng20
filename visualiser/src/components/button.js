@@ -1,27 +1,6 @@
 import React, { Component } from "react";
 import classes from "./VideoPlayer.module.css";
-import data from "./prediction_results.json";
-// import { Animate } from "react-move";
-// import _ from "lodash";
-// import classes from "./VideoPlayer.module.css";
-// import { Container, Button, Link } from 'react-floating-action-button'
 
-// const btnFloatStyle = {
-//   margin: 0,
-//   top: 'auto',
-//   right: 20,
-//   bottom: 20,
-//   left: 'auto',
-//   position: 'fixed',
-//   padding: "10px"
-// }
-
-// const tstFloat = {
-//   position: 'fixed',
-//   top: '1000px',
-//   right: '800px'
-// }
-//var health = data.prediction;
 class ButtonBoi extends Component {
   state = {};
   constructor(props) {
@@ -37,8 +16,19 @@ class ButtonBoi extends Component {
       height: this.props.params.heightArr[0],
       onClick: this.props.params.onClick,
       vidName: this.props.params.vidName,
+      buttonCSS: null,
+      prediction: this.props.params.prediction,
       backgroundColor: "f0f0",
     };
+    
+    if(this.state.prediction === "Healthy"){
+      this.state.buttonCSS = classes.buttonHealthy;
+    } else if(this.state.prediction === "Benign"){
+      this.state.buttonCSS = classes.buttonBenign;
+    } else if(this.state.prediction === "Cancer"){
+      this.state.buttonCSS = classes.buttonCancer;
+    }
+    
     this.subTstFloat = {
       right: parseInt(this.state.right),
       bottom: parseInt(this.state.bottom),
@@ -84,19 +74,14 @@ class ButtonBoi extends Component {
       paddingLeft: "0px",
       paddingTop: "0px",
       backgroundColor: "f0f0",
+      borderColor:"ffff",
       borderRadius: 10,
     };
     return (
       <div>
         <button
-          className={classes.button}
+          className={this.state.buttonCSS}
           style={subTstFloat}
-          /*onMouseEnter={() => {
-            this.setState({ backgroundColor: "red" });
-          }}
-          onMouseLeave={() => {
-            this.setState({ backgroundColor: "ffff" });
-          }}*/
           onClick={this.state.onClick}
         />
       </div>
