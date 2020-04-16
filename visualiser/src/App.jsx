@@ -73,7 +73,7 @@ class App extends Component {
             intensityData: this.props.intensityData,
             predictionData: this.props.predictionData,
             rawData: this.props.rawData,
-            activeROIs: new Array(this.props.intensityData.length).fill(true),
+            activeROIs: new Array(this.props.rawData.length).fill(true),
             graphRefresh: false,
             renderBoxes: [],
         }
@@ -111,13 +111,13 @@ class App extends Component {
     }
 
     filterFunction = (graphIndex) => {
-
         let tmp = this.state.activeROIs
         tmp[graphIndex] = !tmp[graphIndex]
         this.setState({
             activeROIs: tmp,
             rnd: this.state.rnd + 1
         })
+        this.forceUpdate()
     }
 
     buildLinegraphValues = () => {
@@ -146,8 +146,8 @@ class App extends Component {
             activeROIs: new Array(this.state.intensityData.length).fill(true)
         })
     }
-    printDocument() {
 
+    printDocument() {
         let canvas = document.createElement('canvas')
         // canvas.setAttribute('id', 'canvas')
         // let canvas = document.getElementById('canvas') // declare a canvas element in your html

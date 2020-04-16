@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import classes from "./VideoPlayer.module.css";
-let vid_frameRate = 25
+let vid_frameRate = 10
 
 
 class ButtonBoi extends Component {
