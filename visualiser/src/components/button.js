@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import classes from "./VideoPlayer.module.css";
+let vid_frameRate = 25
+
 
 class ButtonBoi extends Component {
   state = {};
@@ -45,8 +47,11 @@ class ButtonBoi extends Component {
 
     setInterval(() => {
       let time = Math.round(
-        parseFloat(document.getElementById("surgeryVideo").currentTime) * 1
-      );
+        parseFloat(document.getElementById("surgeryVideo").currentTime) * vid_frameRate
+      )
+      if (time >= this.state.leftArr.length) {
+        time = this.state.leftArr.length - 1
+      }
 
       let loc = document.getElementById('surgeryVideo').getBoundingClientRect()
       // console.log(time)
